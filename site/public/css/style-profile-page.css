@@ -65,6 +65,7 @@ ul.meniuTopics{
   position: absolute;
   list-style-type: none;
   text-align: center;
+  box-shadow: 10px 0 5px -2px #888;
 }
 
 ul.meniuTopics li img{
@@ -84,6 +85,20 @@ hr {
   border-width: 10px;
 }
 
-ul.meniuTopics:hover{
+/*@keyframes slide{
+  from {translate(-100px, 0px);}
+  to {translate(0px, 0px);}
+}*/
 
+.slide_text li p{
+  text-indent: -190px;
+  transition: 2s ease;
+  /*animation-name: slide;
+  animation-duration: 2s;
+  animation-timing-function: ease;
+  animation-play-state: paused;*/
+}
+.slide_text:hover li p{
+  transform: translate(95px, 0px);
+  /*animation-play-state: running;*/
 }
