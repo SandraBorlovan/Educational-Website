@@ -1,0 +1,91 @@
+body{
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+.topPanel{
+  width: 100%;
+  min-height: 10%;
+  background-color: rgb(4,146,70);
+  position: absolute;
+  text-align: center;
+}
+
+.topPanel p{
+  font-size: 20px;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.topPanel img{
+  top: 0px;
+  float: right;
+  max-width: 3%;
+  min-height: 3%;
+  display: inline-block;
+  border: 1px solid #FFF;
+  border-radius: 35px;
+  margin : 1%;
+}
+
+.mainPanel{
+  /*top: 10%;
+  min-width: 70%;
+  position: relative;*/
+}
+
+.code{
+  top: 10%;
+  min-width: 70%;
+  min-height: 40%;
+  background-color: rgb(1,91,43);/*rgb(5,104,57);*/
+  position: absolute;
+  /*vertical-align:top;*/
+}
+
+.terminal{
+  top: 50%;
+  min-width: 70%;
+  min-height: 40%;
+  background-color: black;
+  position: absolute;
+  /*vertical-align: bottom;*/
+}
+
+.taskDescription{
+  left: 70%;
+  top: 10%;
+  min-width: 30%;
+  min-height: 80%;
+  background-color: white;
+  position: absolute;
+}
+
+.butttonSupport{
+  top: 90%;
+  width: 100%;
+  max-height: 10%;
+  padding: 4px;
+  position: absolute;
+  background-color: rgb(4,146,70);
+}
+
+.button{
+  width: 10%;
+  height: 70%;
+  border: none;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  background-color: rgb(1,91,43);
+}
+
+#playButton{
+  float: right;
+}
