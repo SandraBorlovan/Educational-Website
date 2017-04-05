@@ -4,19 +4,17 @@
 		<title>FunCode</title>
 		<link href="css/style-top-meniu.css" rel="stylesheet" type="text/css"></link>
 		<link href="css/style-profile-page.css" rel="stylesheet" type="text/css"></link>
-		<!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"></link>
 
-		<script src="js/jquery.min.js"></script>
-		<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script> -->
+		<script src="js/tutorial.js"></script>
 	</head>
 
 	<body>
 
   	<div>
 			<ul class="topmeniu" id="myTopmeniu">
-				<li><a href="home.html">Home</a></li>
-				<li><a href="tutorials.html">Tutorials</a></li>
 				<li><a href="index.html">About</a></li>
+				<li><a href="profile.html">Home</a></li>
+				<li><a href="tutorials.html">Tutorials</a></li>
 			</ul>
 		</div>
 
@@ -30,21 +28,32 @@
     </div>
 
     <hr/>
-    <ul class="border meniuTopics slide_text">
-  	   <li>
-				 <img src="/images/personalise_icon.png"></img>
-				 <p>Personalise</p>
-			 </li>
-  		 <li>
-				 <img src="/images/settings_icon.png"></img>
-				 <p>Settings</p>
-			 </li>
-  		 <li>
-				 <img src="/images/doc_icon.png"></img>
-				 <p>Tutorials</p>
-			 </li>
-    </ul>
+		<div class="sideMeniu">
+    	<ul class="border meniuTopics slide_text">
+  	   	<li onclick="personaliseButton()" id="personalise_btn">
+				 	<img src="/images/personalise_icon.png"></img>
+				 	<p>Personalise</p>
+			 	</li>
+  		 	<li onclick="settingsButton()" id="settings_btn">
+				 	<img src="/images/settings_icon.png"></img>
+				 	<p>Settings</p>
+			 	</li>
+  		 	<li onclick="tutorialsButton()" id="tutorials_btn">
+				 	<img src="/images/doc_icon.png"></img>
+				 	<p>Tutorials</p>
+			 	</li>
+    	</ul>
 
+			<div class="topicDisplay" id="topic_1">
+				<p>Personalise</p>
+			</div>
+			<div class="topicDisplay" id="topic_2">
+				<p>Settings</p>
+			</div>
+			<div class="topicDisplay" id="topic_3">
+				<p>Tutorials</p>
+			</div>
+	  </div>
 
 	</body>
 </html>

@@ -55,10 +55,13 @@ a.profileBtn{
 a.profileBtn:hover{
   border: 2px solid #4CAF50;
 }
+.sideMeniu{
+    margin: 0px;
+}
 
 ul.meniuTopics{
-  margin: 0;
-  padding: 1%;
+  margin: 0px;
+  padding: 0px;
   width: 5%;
   height: 100%;
   background-color: rgb(233, 173, 0);
@@ -69,8 +72,9 @@ ul.meniuTopics{
 }
 
 ul.meniuTopics li img{
-  padding-top: 35%;
-  padding-bottom: 30%;
+  margin: 2px;
+  /*padding-top: 35%;
+  padding-bottom: 30%;*/
   max-height: 100%;
   max-width: 100%;
   display: inline-block;
@@ -102,4 +106,29 @@ hr {
 .slide_text:hover li p{
   transform: translate(95px, 0px);
   /*animation-play-state: running;*/
+}
+
+.topicDisplay{
+  left: 8%;
+  min-width: 92%;
+  min-height: 100%;
+  padding: 0px;
+  /*background-color: red;*/
+  position: absolute;
+}
+
+#personalise_btn{
+  background-color: orange;
+}
+
+#topic_1{
+  visibility: visible;
+}
+
+#topic_2{
+  visibility: hidden;
+}
+
+#topic_3{
+  visibility: hidden;
 }
