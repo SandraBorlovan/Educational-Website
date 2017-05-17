@@ -14,8 +14,12 @@
 
 var http = require("http");
 var fs = require("fs");
+var path = require("path");
 var OK = 200, NotFound = 404, BadType = 415, Error = 500;
 var types, banned;
+var sqlite3 = require('sqlite3').verbose();
+var dbpath = path.resolve('public/db/', 'database.db');
+var db = new sqlite3.Database(dbpath);
 start(8080);
 
 // Start the http service.  Accept only requests from localhost, for security.
