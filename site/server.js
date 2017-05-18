@@ -12,15 +12,22 @@
 // Start the server: change the port to the default 80, if there are no
 // privilege issues and port number 80 isn't already in use.
 
+var express = require("express");
 var http = require("http");
 var fs = require("fs");
 var path = require("path");
+
 var OK = 200, NotFound = 404, BadType = 415, Error = 500;
 var types, banned;
+
 var sqlite3 = require('sqlite3').verbose();
 var dbpath = path.resolve('public/db/', 'database.db');
 var db = new sqlite3.Database(dbpath);
+var app = express();
 start(8080);
+
+
+
 
 // Start the http service.  Accept only requests from localhost, for security.
 function start(port) {
@@ -29,6 +36,7 @@ function start(port) {
     banUpperCase("./public/", "");
     var service = http.createServer(handle);
     service.listen(port, "localhost");
+    //app.listen(port, "localhost" );
     var address = "http://localhost";
     if (port != 80) address = address + ":" + port;
     console.log("Server running at", address);
@@ -98,6 +106,8 @@ function banUpperCase(root, folder) {
         banUpperCase(root, file);
     }
 }
+
+// app.get()
 
 // The most common standard file extensions are supported, and html is
 // delivered as xhtml ("application/xhtml+xml").  Some common non-standard file
