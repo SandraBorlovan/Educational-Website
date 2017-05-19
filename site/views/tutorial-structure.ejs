@@ -1,0 +1,47 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-GB" xml:lang="en-GB">
+
+	<head>
+		<title>FunCode</title>
+		<link href="../css/style-tutorial-structure.css" rel="stylesheet" type="text/css"></link>
+
+	</head>
+
+	<body>
+
+    <div class="topPanel">
+      <p>Lesson <%=content.id%>: <%=content.title%></p>
+      <img src="../images/profile.svg"></img>
+    </div>
+
+
+    <div class="mainPanel">
+			<textarea class="code"># This is your terminal</textarea>
+      <div class="terminal">
+				<p></p>
+      </div>
+    </div>
+
+    <div class="taskDescription">
+			<h1>Task Description</h1>
+			<p> <%=content.task%> </p>
+			<h3>Let's begin</h3>
+			<p> <%=content.q1%>   </p>
+			<p> <%=content.q2%>   </p>
+			<p> <%=content.hint%> </p>
+		</div>
+
+    <div class="butttonSupport">
+      <div class="button" id="runButton">
+        <!-- <p>Run Code</p> -->
+				<img class="btn" src="../images/run-code-btn.png"></img>
+      </div>
+      <div class="button" id="saveButton">
+        <p>Save Code</p>
+      </div>
+      <div class="button" id="playButton">
+        <p>Play Game</p>
+      </div>
+    </div>
+
+	</body>
+</html>

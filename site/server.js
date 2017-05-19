@@ -16,27 +16,62 @@ var express = require("express");
 var http = require("http");
 var fs = require("fs");
 var path = require("path");
+var sqlite3 = require('sqlite3').verbose();
+
+var dbpath = path.resolve('public/db/', 'database.db');
+var db = new sqlite3.Database(dbpath);
+var app = express();
+
+var options = { setHeaders: deliverXHTML };
+app.use(express.static("public", options));
+
+// set the view engine to ejs
+app.set('view engine', 'ejs');
 
 var OK = 200, NotFound = 404, BadType = 415, Error = 500;
 var types, banned;
 
-var sqlite3 = require('sqlite3').verbose();
-var dbpath = path.resolve('public/db/', 'database.db');
-var db = new sqlite3.Database(dbpath);
-var app = express();
+app.get("/index.html", function(req, res){
+  res.render("index");
+});
+
+app.get("/profile.html", function(req, res){
+  res.render("profile");
+});
+
+app.get("/tutorials.html", function(req, res){
+  res.render("tutorials");
+});
+
+app.get("/tutorial-structure.html/id=:id", function(req, res){
+  var content = {};
+  var requestId = req.params.id;
+
+  db.all('select * from tutorials where id= ?', requestId, handler);
+
+  function handler(err, row){
+    content['id']    = row[0].id;
+    content['title'] = row[0].title;
+    content['task']  = row[0].task;
+    content['q1']    = row[0].q1;
+    content['q2']    = row[0].q2;
+    content['hint']  = row[0].hint;
+
+    res.render('tutorial-structure',{
+      content : content
+    });
+  }
+});
+
+
 start(8080);
-
-
-
 
 // Start the http service.  Accept only requests from localhost, for security.
 function start(port) {
     types = defineTypes();
     banned = [];
     banUpperCase("./public/", "");
-    var service = http.createServer(handle);
-    service.listen(port, "localhost");
-    //app.listen(port, "localhost" );
+    app.listen(port, "localhost" );
     var address = "http://localhost";
     if (port != 80) address = address + ":" + port;
     console.log("Server running at", address);
@@ -107,7 +142,12 @@ function banUpperCase(root, folder) {
     }
 }
 
-// app.get()
+// Called by express.static.  Deliver response as XHTML.
+function deliverXHTML(res, path, stat) {
+    if (path.endsWith(".ejs")) {
+        res.header("Content-Type", "application/xhtml+xml");
+    }
+}
 
 // The most common standard file extensions are supported, and html is
 // delivered as xhtml ("application/xhtml+xml").  Some common non-standard file
