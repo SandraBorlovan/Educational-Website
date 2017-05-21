@@ -56,6 +56,7 @@ app.get("/tutorial-structure.html/id=:id", function(req, res){
     content['q1']    = row[0].q1;
     content['q2']    = row[0].q2;
     content['hint']  = row[0].hint;
+    content['init_code']  = row[0].init_code;
     content['code']  = row[0].code;
 
     res.render('tutorial-structure',{

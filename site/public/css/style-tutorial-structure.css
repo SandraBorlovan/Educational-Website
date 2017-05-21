@@ -57,6 +57,10 @@ body{
   /*vertical-align:top;*/
 }
 
+#myCode{
+  visibility: hidden;
+}
+
 .terminal{
   top: 50%;
   min-width: 70%;
