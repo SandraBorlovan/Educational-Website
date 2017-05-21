@@ -30,6 +30,7 @@ body{
   border: 1px solid #FFF;
   border-radius: 35px;
   margin : 1%;
+  cursor:pointer;
 }
 
 .mainPanel{
@@ -69,9 +70,8 @@ body{
 .taskDescription{
   left: 70%;
   top: 10%;
-  min-width: 30%;
-  max-width: 30%;
-  min-height: 80%;
+  width: 30%;
+  height: 80%;
   background-color: white;
   position: absolute;
   padding: 1%;
@@ -114,4 +114,10 @@ body{
   width: 80%;*/
   top: -50px;
   left: -100px;
+}
+
+#myDownMeniu{
+  position: absolute;
+  background-color: rgb(4,146,70);
+  top: 180%;
 }

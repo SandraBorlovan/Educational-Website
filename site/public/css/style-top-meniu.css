@@ -24,6 +24,18 @@ ul.topmeniu li a {
     font-size: 17px;
 }
 
+.topmeniu img{
+  top: 0px;
+  float: right;
+  max-width: 3%;
+  min-height: 3%;
+  display: inline-block;
+  border: 1px solid #FFF;
+  border-radius: 35px;
+  margin : 0.4%;
+	cursor:pointer;
+}
+
 div.downmeniu{
 	/*position: fixed;*/
 	bottom : 0;
