@@ -25,6 +25,7 @@ var app = express();
 var options = { setHeaders: deliverXHTML };
 app.use(express.static("public", options));
 
+
 // set the view engine to ejs
 app.set('view engine', 'ejs');
 
@@ -64,6 +65,19 @@ app.get("/tutorial-structure.html/id=:id", function(req, res){
     });
   }
 });
+
+// var bodyParser = require('body-parser');
+// app.use(bodyParser.json()); // support json encoded bodies
+// app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+//
+// app.use(express.json());       // to support JSON-encoded bodies
+// app.use(express.urlencoded()); // to support URL-encoded bodies
+//
+// app.post("/login", function(req, res){
+//   var username = req.body.username;
+//   // var password = req.body.password;
+//   console.log(username);
+// });
 
 
 start(8080);

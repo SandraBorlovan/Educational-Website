@@ -3,6 +3,8 @@
 		<title>FunCode</title>
 		<link href="../css/style-top-meniu.css" rel="stylesheet" type="text/css"></link>
 		<link href="../css/style-about-page.css" rel="stylesheet" type="text/css"></link>
+
+		<script src="../js/log-in.js"></script>
 	</head>
 	<body>
 		<div class="scrollable">
@@ -12,14 +14,36 @@
 				<li><a href="profile.html">Home</a></li>
 				<li><a href="tutorials.html">Tutorials</a></li>
 
-				<img class="dropBtn" src="../images/profile.svg"></img>
+				<img class="dropBtn" src="../images/profile.png" onclick="enableLogIn()"></img>
 				<!-- <ul  class="dropDownMeniu" id="myDropDownMeniu">
 					<li><a href="#">Log in </a></li>
 					<li><a href="#">Log out</a></li>
 				</ul> -->
 			</ul>
 
-			<div class="canvas" id="image_kids">
+			<div class="overShadow" id="myLogInWindow" >
+				<form class="formContent" action="/login" method="post">
+					<div class="header">
+						<div class="logo"></div>
+						<!-- <label class="loginTitle">FunCode</label> -->
+				  </div>
+
+					<label>Username</label>
+					<input type="text" id="username" name="username" placeholder="Your username..">
+
+					<label>Email</label>
+					<input type="text" id="email" name="email" placeholder="Your email..">
+
+					<label>Password</label>
+					<input type="text" id="password" name="password" placeholder="Your password..">
+
+					<button class="submitBtn" type="sumbit">Log in</button>
+					<button class="cancelBtn">Cancel</button>
+				</form>
+			</div>
+
+			<div class="canvas" id="bg_image">
+				<h1>Let's have some fun!<h1>
 			</div>
 
 			<div class="canvas" id="aboutForKids">
@@ -33,6 +57,9 @@
 			</div>
 
 			<div class="canvas" id="aboutForParents">
+				<!-- <div class="animation" id="myAnimation">
+					<img src= "../images/gear1.png"></img>
+				</div> -->
 				<h1> Why not learn and have fun?!</h1>
 				<div class="textContainer">
 					<p>This website offers the advantages of learning an up to date programming language while getting engaged simple and enjoyable tasks. An interpreted language, Python has a design philosophy which emphasizes code readability, its resamblance with natural english making into perfectly suitable for childern. Its abstarction offers the ability to focus more on the process understanding rather than syntax.</p>

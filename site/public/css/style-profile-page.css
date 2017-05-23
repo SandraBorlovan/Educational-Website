@@ -61,7 +61,7 @@ a.profileBtn:hover{
 
 ul.meniuTopics{
   margin: 0px;
-  padding: 0px;
+  padding: 4px;
   width: 5%;
   height: 100%;
   background-color: rgb(233, 173, 0);
@@ -69,6 +69,7 @@ ul.meniuTopics{
   list-style-type: none;
   text-align: center;
   box-shadow: 10px 0 5px -2px #888;
+  align-items: center;
 }
 
 ul.meniuTopics li img{
