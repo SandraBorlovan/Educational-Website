@@ -54,7 +54,6 @@ body{
   padding: 1%;
   color: white;
   margin: 0%;
-  /*vertical-align:top;*/
 }
 
 #myCode{
@@ -68,7 +67,11 @@ body{
   background-color: black;
   position: absolute;
   margin: 0%;
-  /*vertical-align: bottom;*/
+  padding: 1%;
+}
+
+#myOutput{
+  color: white;
 }
 
 .taskDescription{
