@@ -5,6 +5,7 @@ div.wideCanvas{
   margin: 0;
   padding: 0;
   align-items: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .wideCanvas img{
@@ -115,8 +116,12 @@ hr {
   min-width: 92%;
   min-height: 100%;
   padding: 0px;
-  /*background-color: red;*/
+  text-align: center;
   position: absolute;
+}
+
+.topicDisplay h1{
+  color: rgb(4,146,70);
 }
 
 #personalise_btn{
@@ -129,6 +134,40 @@ hr {
 
 #topic_2{
   visibility: hidden;
+}
+
+.detailsContent{
+  left: 25%;
+  top: 30px;
+  width: 50%;
+  padding: 10px;
+  align-items: left;
+  text-align: left;
+  position: relative;
+}
+
+#myTutorials{
+  left: 15%;
+  width: 70%;
+}
+
+.detailsContent label, input{
+  width: 100%;
+  height: 30%;
+  font-size: 25px;
+  margin: 10px;
+  display: block;
+}
+
+.detailsContent p{
+  text-align: right;
+}
+
+.detailsContent button{
+  left: 30%;
+  width: 50%;
+  font-size: 30px;
+  position: absolute;
 }
 
 #topic_3{

@@ -46,14 +46,53 @@
     	</ul>
 
 			<div class="topicDisplay" id="topic_1">
-				<p>Personalise</p>
+				<br></br>
+				<h1>Personalise</h1>
 			</div>
+
 			<div class="topicDisplay" id="topic_2">
-				<p>Settings</p>
+				<br></br>
+				<h1>User Details</h1>
+				<form class="detailsContent" id ="myDetails" action="/login" method="post">
+					<label>Name</label>
+					<input type="text" id="name" name="name" placeholder="Your name..">
+					<br></br>
+
+					<label>Username</label>
+					<input type="text" id="username" name="username" placeholder="Your username..">
+					<br></br>
+
+					<label>Email</label>
+					<input type="text" id="email" name="email" placeholder="Your email..">
+					<br></br>
+
+					<label>Education:</label>
+					<input type="text" id="education" name="education" placeholder="Your education..">
+					<br></br>
+
+					<button class="submitBtn" type="sumbit">Save modifications</button>
+				</form>
 			</div>
+
 			<div class="topicDisplay" id="topic_3">
-				<p>Tutorials</p>
+				<br></br>
+				<h1>Tutorials</h1>
+				<div class="detailsContent" id="myTutorials">
+					<div class="row">
+						<h2>Tutorial 1: String Manipulation</h2>
+						<p>Completed<p>
+					</div>
+					<div class="row">
+						<h2>Tutorial 2: If Statements and Booleans</h2>
+						<p>Not attempted<p>
+					</div>
+					<div class="row">
+						<h2>Tutorial 3: Lists and Functions</h2>
+						<p>Not attempted<p>
+					</div>
+				</div>
 			</div>
+
 	  </div>
 
 	</body>

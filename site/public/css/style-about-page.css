@@ -28,7 +28,10 @@ div.textContainer{
 
 #bg_image h1{
   top: 35%;
-  left: 37%;
+  left: 35%;
+  font-size: 45px;
+  color : white;
+  font-family: "Bookman";
   position: absolute;
 }
 
@@ -69,10 +72,21 @@ a.btn:hover {
 	transition: box-shadow 1s ease;
 }
 
+#gear_1{
+  height: 20%;
+}
+
+#gear_2{
+  height: 10%;
+}
+
+#gear_3{
+  height: 15%;
+}
+
 #myAnimation img{
-    left: -40%;
-    width: 20%;
-    height:20%;
+    vertical-align: top;
+    left: -37%;
     position:relative;
     animation: spin 10s linear infinite;
     animation-play-state: paused;
