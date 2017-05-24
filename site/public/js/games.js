@@ -3,7 +3,7 @@ function startGame(id){
 
   switch(id) {
     case 1:
-        document.getElementById("mySnakeGame").style.visibility= "visible" ;
+        document.getElementById("myPacmanGame").style.visibility= "visible" ;
         break;
     case 2:
         document.getElementById("myMemoryGame").style.visibility= "visible" ;

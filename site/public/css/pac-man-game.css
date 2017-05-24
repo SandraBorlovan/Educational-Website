@@ -1,0 +1,11 @@
+#myPacmanGame{
+  background-color: black;
+  visibility: hidden;
+}
+
+#myPacman{
+  height: 6%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url("../images/pac_man.svg.png");
+}
