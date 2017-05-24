@@ -66,18 +66,27 @@ app.get("/tutorial-structure.html/id=:id", function(req, res){
   }
 });
 
-// var bodyParser = require('body-parser');
-// app.use(bodyParser.json()); // support json encoded bodies
-// app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
-//
-// app.use(express.json());       // to support JSON-encoded bodies
-// app.use(express.urlencoded()); // to support URL-encoded bodies
-//
-// app.post("/login", function(req, res){
-//   var username = req.body.username;
-//   // var password = req.body.password;
-//   console.log(username);
-// });
+
+app.post("/login", function(req, res){
+  var body = "";
+  req.on('data', add);
+  req.on('end', end);
+  var response = {};
+
+  function add(chunk){
+      body = body + chunk.toString();
+      console.log('Body: ', body);
+  }
+  function end(){
+        body = JSON.parse(body);
+        console.log('Body: ', body);
+        // db.get("select * from user where username= ?", body.username, handler);
+
+        function handler(err, row){
+            // res.send(JSON.stringify(response));
+        }
+    }
+});
 
 
 start(8080);
