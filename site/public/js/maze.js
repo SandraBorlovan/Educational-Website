@@ -94,7 +94,6 @@ function Maze(){
       }, 3000);
 
    }
-  this.start();
  }
 
  this.setGhostsConsumable = function () {
