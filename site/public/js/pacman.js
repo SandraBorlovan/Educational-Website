@@ -2,6 +2,14 @@ function Pacman(){
   this.dir = createVector(0,0);
   this.pos = createVector(60,60);
 
+  this.checkPortal = function(){
+    if(this.pos.x <= -20 && this.pos.y == 380){
+      this.pos.x = 580;
+    }else if(this.pos.x >= 600 && this.pox.y == 380){
+      this.pos.x = 20;
+    }
+  }
+
   this.setDir= function(x, y){
     this.dir.x = x;
     this.dir.y = y;

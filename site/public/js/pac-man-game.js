@@ -14,7 +14,7 @@ function setup(){
 
 function draw(){
   background(0);
-  
+
   maze.show();
   if(frameCount % 8 == 0){
     pacman.update();

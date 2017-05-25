@@ -13,6 +13,18 @@ function Maze(){
     ,[0,10],[1,10],[2,10],[3,10],[4,10],[5,10],[6,10],[7,10],[8,10],[9,10],[10,10],[11,10],[12,10],[13,10],[14,10],[15,10],[16,10]
   ];
 
+  this.initialise = function(){
+    //Draw food
+    for(var i=0; i < 17; i++){
+      for(var j=0; j < 11; j++){
+        if(!this.contains(i*scl, j*scl)){
+          var food = new Food();
+          this.food.push(food);
+        }
+      }
+    }
+  }
+
   this.contains = function(x ,y){
     var result = false;
     for(var i=0; i< this.grid.length; i++){
