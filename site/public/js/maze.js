@@ -71,31 +71,30 @@ function Maze(){
  this.stop = function () {
    this.status = "stop";
    if(this.pacman.noParts == maxNoParts || this.food.length == 0){
-    //  setTimeout(function(){
-    //    push();
-    //    fill(color(0, 0, 255));
-    //    rect(4*scl, 3*scl, 9*scl, 5*scl);
-     //
-    //    textSize(20);
-    //    fill(255, 255, 255);
-    //    text("Game over.", 7*scl, 4*scl);
-    //    text("Well done on collecting all parts.", 4.5*scl, 5*scl);
-    //    pop();
-    //  }, 2000);
-   }else{
-    //  setTimeout(function(){
-    //    push();
-    //    fill(color(0, 0, 255));
-    //    rect(4*scl, 3*scl, 9*scl, 5*scl);
-     //
-    //    textSize(20);
-    //    fill(255, 255, 255);
-    //    text("Game over.", 7*scl, 4*scl);
-    //    text("Try again by pressing any key to start", 4.5*scl, 5*scl);
-    //    pop();
-    //  }, 2000);
-   }
 
+     document.getElementById("myMessage").innerHTML = "Well done!";
+     document.getElementById("myGameOver").style.visibility = "visible";
+     setTimeout( function(){
+        document.getElementById("myGameOver").style.visibility = "hidden";
+        document.getElementById("myPacmanGame").style.visibility= "hidden" ;
+        document.getElementById("myStartScreen").style.visibility= "visible" ;
+        document.getElementById("myCode").style.visibility= "visible" ;
+        document.getElementById("myInitCode").style.visibility= "hidden" ;
+      }, 3000);
+
+   }else{
+     document.getElementById("myMessage").innerHTML = "You can always try again!";
+     document.getElementById("myGameOver").style.visibility = "visible";
+     setTimeout( function(){
+        document.getElementById("myGameOver").style.visibility = "hidden";
+        document.getElementById("myPacmanGame").style.visibility= "hidden" ;
+        document.getElementById("myStartScreen").style.visibility= "visible" ;
+        document.getElementById("myCode").style.visibility= "visible" ;
+        document.getElementById("myInitCode").style.visibility= "hidden" ;
+      }, 3000);
+
+   }
+  this.start();
  }
 
  this.setGhostsConsumable = function () {
