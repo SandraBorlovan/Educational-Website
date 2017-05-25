@@ -10,12 +10,26 @@ function Pacman(){
     }
   }
 
+  this.consumeFood = function (x,y) {
+    for (var i = 0; i < food.length; i++) {
+      console.log(food[i].x);
+      console.log(x);
+      if (food[i].x * 12== x && food[i].y * 12== y) {
+        console.log(food[i].x);
+        console.log(x);
+        food.splice(i, 1);
+        // food[i].remove();
+      }
+    }
+  }
+
   this.setDir= function(x, y){
     this.dir.x = x;
     this.dir.y = y;
   }
 
   this.update = function(){
+    this.consumeFood(this.pos.x, this.pos.y);
     if(this.dir.x == 1){
       this.right();
     }else if(this.dir.x == -1){
@@ -66,6 +80,6 @@ function Pacman(){
     stroke('yellow');
     point(this.pos.x, this.pos.y);
     pop();
-
   }
+
 }
