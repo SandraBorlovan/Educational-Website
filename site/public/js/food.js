@@ -1,12 +1,19 @@
-function Food(x,y){
+function Food (x,y) {
   this.x = x;
   this.y = y;
+  this.strokeWeight = 1/10*scl;
+  this.type = "normal";
 
-  this.show = function(){
+  this.mega = function () {
+    this.strokeWeight = 4/10*scl;
+    this.type = "mega";
+  }
+
+  this.show = function () {
     push();
-    strokeWeight(20);
+    strokeWeight(this.strokeWeight);
     stroke('white');
-    point((this.x * scl) + floor(scl/2), (this.y *scl) + floor(scl/2));
+    point((this.x*scl)+floor(scl/2), (this.y*scl)+floor(scl/2));
     pop();
   }
 }
