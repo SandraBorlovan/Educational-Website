@@ -34,30 +34,6 @@ function reset() {
   maze.start();
 }
 
-function displayLostMessage(){
-  push();
-  fill(color(0, 0, 255));
-  rect(4*scl, 3*scl, 9*scl, 5*scl);
-
-  textSize(20);
-  fill(255, 255, 255);
-  text("Game over.", 7*scl, 4*scl);
-  text("Try again by pressing any key to start", 4.5*scl, 5*scl);
-  pop();
-}
-
-function displayWinMessage(){
-  push();
-  fill(color(0, 0, 255));
-  rect(4*scl, 3*scl, 9*scl, 5*scl);
-
-  textSize(20);
-  fill(255, 255, 255);
-  text("Game over.", 7*scl, 4*scl);
-  text("Well done on collecting all parts.", 4.5*scl, 5*scl);
-  pop();
-}
-
 function keyPressed() {
   var arrowKeyCodes = [37,38,39,40];
 

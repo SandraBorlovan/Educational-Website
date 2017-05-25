@@ -72,28 +72,26 @@ function Maze(){
    this.status = "stop";
    if(this.pacman.noParts == maxNoParts || this.food.length == 0){
 
+     document.getElementById("myTitle").innerHTML = "Game Over!";
      document.getElementById("myMessage").innerHTML = "Well done!";
      document.getElementById("myGameOver").style.visibility = "visible";
-     setTimeout( function(){
-        document.getElementById("myGameOver").style.visibility = "hidden";
-        document.getElementById("myPacmanGame").style.visibility= "hidden" ;
-        document.getElementById("myStartScreen").style.visibility= "visible" ;
-        document.getElementById("myCode").style.visibility= "visible" ;
-        document.getElementById("myInitCode").style.visibility= "hidden" ;
-      }, 3000);
+
 
    }else{
+     document.getElementById("myTitle").innerHTML = "Game Over!";
      document.getElementById("myMessage").innerHTML = "You can always try again!";
      document.getElementById("myGameOver").style.visibility = "visible";
-     setTimeout( function(){
-        document.getElementById("myGameOver").style.visibility = "hidden";
-        document.getElementById("myPacmanGame").style.visibility= "hidden" ;
-        document.getElementById("myStartScreen").style.visibility= "visible" ;
-        document.getElementById("myCode").style.visibility= "visible" ;
-        document.getElementById("myInitCode").style.visibility= "hidden" ;
-      }, 3000);
 
    }
+
+   setTimeout( function(){
+      document.getElementById("myGameOver").style.visibility = "hidden";
+      document.getElementById("myPacmanGame").style.visibility= "hidden" ;
+      document.getElementById("myStartScreen").style.visibility= "visible" ;
+      document.getElementById("myCode").style.visibility= "visible" ;
+      document.getElementById("myInitCode").style.visibility= "hidden" ;
+    }, 3000);
+
  }
 
  this.setGhostsConsumable = function () {

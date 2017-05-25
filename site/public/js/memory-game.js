@@ -45,6 +45,8 @@ function memoryFlipTile(tile, val){
         memory_tile_ids = [];
 
         if(tilesFlipped == memory.length){
+          document.getElementById("myTitle").innerHTML = "Game Over!";
+          document.getElementById("myMessage").innerHTML = "Well done!";
           document.getElementById("myGameOver").style.visibility = "visible";
           setTimeout( function(){
              document.getElementById("myGameOver").style.visibility = "hidden";
