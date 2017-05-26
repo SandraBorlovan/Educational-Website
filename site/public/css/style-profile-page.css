@@ -1,3 +1,9 @@
+body {
+	font-family: 'Raleway', sans-serif;
+  display: flex;
+}
+
+
 div.wideCanvas{
   /*max-width: 100%;*/
   width:100%;
@@ -64,7 +70,7 @@ ul.meniuTopics{
   margin: 0px;
   padding: 4px;
   width: 5%;
-  height: 100%;
+  height: 120%;
   background-color: rgb(233, 173, 0);
   position: absolute;
   list-style-type: none;

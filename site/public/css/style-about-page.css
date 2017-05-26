@@ -1,5 +1,6 @@
-div{
-    /*display:inline-block;;*/
+body {
+	font-family: 'Raleway', sans-serif;
+  display: flex;
 }
 
 div.shadowBox{
@@ -44,12 +45,6 @@ div.scrollable {
 h1.bigTitle{
   /*font-size: 100%;*/
 }
-
-body {
-	font-family: 'Raleway', sans-serif;
-  display: flex;
-}
-
 
 a.btn {
   display: inline-block;
@@ -99,4 +94,12 @@ a.btn:hover {
 
 @keyframes spin {
   100% {transform: rotate(1turn); }
+}
+
+#myDownMeniu p{
+	padding-left: 33%;
+	padding-top: 5%;
+	color: white;
+	font-size: 20px;
+	font-family: "Bookman";
 }

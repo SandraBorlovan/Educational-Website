@@ -14,19 +14,16 @@
 		<meta name="theme-color" content="#ffffff">
 
 		<script src="../js/tutorial.js"></script>
+		<script src="../js/log-in.js"></script>
 	</head>
 
 	<body>
 
-  	<div>
-			<ul class="topmeniu" id="myTopmeniu">
-				<li><a href="index.html">About</a></li>
-				<li><a href="profile.html">Home</a></li>
-				<li><a href="tutorials.html">Tutorials</a></li>
-				<img src="../images/profile.png"></img>
-			</ul>
-		</div>
+		<header>
+  		<% include top-meniu.ejs %>
+		</header>
 
+		<main>
     <div class="wideCanvas">
       <img src="../images/colors.jpg"></img>
     </div>
@@ -102,6 +99,7 @@
 			</div>
 
 	  </div>
+	</main>
 
 	</body>
 </html>
