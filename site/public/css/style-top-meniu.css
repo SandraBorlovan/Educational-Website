@@ -88,6 +88,10 @@ ul.topmeniu li a {
 	margin-bottom: 10px;
 }
 
+.postStatus{
+		padding-left: 30%;
+		color: red;
+}
 
 .buttonHolder{
 	width: 100%;
@@ -120,6 +124,7 @@ ul.topmeniu li a {
 #signInCase{
 	width: 100%;
 	padding-left: 15%;
+	color: black;
 }
 
 #redirectToSignIn{

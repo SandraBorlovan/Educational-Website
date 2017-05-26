@@ -78,11 +78,60 @@ app.post("/login", function(req, res){
   }
   function end(){;
         body = JSON.parse(body);
-        console.log(body.username);
-        // db.get("select * from user where username= ?", body.username, handler);
+        db.get("select * from users where username= ?", body.username, handler);
 
         function handler(err, row){
-            // res.send(JSON.stringify(response));
+            if (err)  throw err;
+            if(row === undefined){
+              response["loginResponse"] = "No such user";
+              response["loggedIn"] = false;
+            }else if( row.password === body.password){
+              response["loginResponse"] = "Log in succesfull";
+              response["loggedIn"] = true;
+            }else{
+              response["loginResponse"] = "Incorrect password";
+              response["loggedIn"] = false;
+            }
+            console.log(response);
+            res.send(JSON.stringify(response));
+        }
+    }
+});
+
+app.post("/signin", function(req, res){
+  var body = "";
+  req.on('data', add);
+  req.on('end', end);
+  var response = {};
+
+  function add(chunk){
+      body = body + chunk.toString();
+      console.log("Finishing add in /signin");
+  }
+  function end(){;
+        console.log("Entered end in /signin");
+        body = JSON.parse(body);
+        db.get("select * from users where username= ?", body.username, handler);
+
+
+        function handler(err, row){
+            console.log("Entered in handle");
+            if (err)  throw err;
+            if(row === undefined){
+
+              db.run("insert into users (username, password, name, email) values (?, ?, ?, ?)", [body.username, body.password, body.name, body.email], insertHandler);
+              function insertHandler(err){
+                if (err) throw err;
+              }
+              response["loginResponse"] = "Sign in succesfull ";
+              response["loggedIn"] = true;
+
+            }else{
+              response["loginResponse"] = "Username already exists";
+              response["loggedIn"] = false;
+            }
+            console.log(response);
+            res.send(JSON.stringify(response));
         }
     }
 });

@@ -24,10 +24,10 @@ function login(){
 }
 
 function signin(){
-  var name    = document.getElementById('name').value;
-  var username = document.getElementById('username').value;
-  var email    = document.getElementById('email').value;
-  var password = document.getElementById('password').value;
+  var name    = document.getElementById('sg_name').value;
+  var username = document.getElementById('sg_username').value;
+  var email    = document.getElementById('sg_email').value;
+  var password = document.getElementById('sg_password').value;
 
   var info = {}
   info["username"] = username;
@@ -37,19 +37,25 @@ function signin(){
 
   console.log("Sign in with", info);
 
-  // sendRequest('POST', '/login', true, JSON.stringify(info));
+  sendRequest('POST', '/signin', true, JSON.stringify(info));
 }
 
 function sendRequest(method, section, syncValue, data){
+  console.log("Received post request to", section);
   var q = new XMLHttpRequest();
-   q.onreadystatechange = receive;
-   q.open(method, section, syncValue);
-   q.send(data);
-   function receive(){
-       if (this.readyState == 4 && this.status == 200) {
-           location.reload();
-       }
-   }
+  q.onreadystatechange = receive;
+  q.open(method, section, syncValue);
+  q.send(data);
+  function receive(response){
+    if(this.response != ""){
+      var response = JSON.parse(this.response);
+      console.log(response.loginResponse);
+      // document.getElementById("loginResponse").innerHTML = response.loginResponse;
+    }
+    if (this.readyState == 4 && this.status == 200) {
+      location.reload();
+    }
+  }
 }
 
 function exitLogin(){
