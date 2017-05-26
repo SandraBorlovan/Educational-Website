@@ -75,11 +75,10 @@ app.post("/login", function(req, res){
 
   function add(chunk){
       body = body + chunk.toString();
-      console.log('Body: ', body);
   }
-  function end(){
+  function end(){;
         body = JSON.parse(body);
-        console.log('Body: ', body);
+        console.log(body.username);
         // db.get("select * from user where username= ?", body.username, handler);
 
         function handler(err, row){

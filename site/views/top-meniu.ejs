@@ -7,7 +7,8 @@
 </ul>
 
 <div class="overShadow" id="myLogInWindow" >
-  <form class="formContent">
+
+  <form class="formContent" method="post" id="logIn">
     <div class="header">
       <div class="logo"></div>
       <!-- <label class="loginTitle">FunCode</label> -->
@@ -17,13 +18,42 @@
     <label>Username</label>
     <input type="text" id="username" name="username" placeholder="Your username..">
 
+    <label>Password</label>
+    <input type="text" id="password" name="password" placeholder="Your password..">
+
+
+    <br></br>
+    <div class="buttonHolder" id="myButttonHolder">
+      <button class="submitBtn formButton"><a href="#" onclick="login()">Log in</a></button>
+      <button class="cancelBtn formButton"><a href="#" onclick="exitLogin()">Cancel</a></button>
+    </div>
+
+    <br></br>
+    <br></br>
+    <label id="signInCase">Don't have an account. <a href="#" id="redirectToSignIn" onclick="enableSignIn()">Sign in</a> </label>
+  </form>
+
+  <form class="formContent" method="post" id="signIn" >
+    <div class="header">
+      <div class="logo"></div>
+    </div>
+
+    <label>Name</label>
+    <input type="text" id="name" name="name" placeholder="Your name..">
+
+    <label>Username</label>
+    <input type="text" id="username" name="username" placeholder="Your username..">
+
     <label>Email</label>
-    <input type="text" id="email" name="email" placeholder="Your email..">
+    <input type="text" id="email" name="password" placeholder="Your email..">
 
     <label>Password</label>
     <input type="text" id="password" name="password" placeholder="Your password..">
 
-    <button class="submitBtn" onclick="login()" >Log in</button>
-    <button class="cancelBtn" onclick="exitLogin()">Cancel</button>
+    <div class="buttonHolder" id="myButttonHolder">
+      <button class="submitBtn formButton"><a href="#" onclick="signin()">Sign in</a></button>
+      <button class="cancelBtn formButton"><a href="#" onclick="exitLogin()">Cancel</a></button>
+    </div>
+
   </form>
 </div>
