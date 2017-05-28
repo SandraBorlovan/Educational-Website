@@ -9,12 +9,14 @@
 <div class="overShadow" id="myLogInWindow" >
 
   <form class="formContent" method="post" id="logIn">
-    <div class="header">
+    <div class="header" id="logInHeader">
       <div class="logo"></div>
       <!-- <label class="loginTitle">FunCode</label> -->
       <!-- <p>FunCode<p> -->
     </div>
 
+    <br></br>
+    <br></br>
     <label>Username</label>
     <input type="text" id="username" name="username" placeholder="Your username..">
 
@@ -25,8 +27,8 @@
 
     <br></br>
     <div class="buttonHolder" id="myButttonHolder">
-      <button class="submitBtn formButton"><a href="#" onclick="login()">Log in</a></button>
-      <button class="cancelBtn formButton"><a href="#" onclick="exitLogin()">Cancel</a></button>
+      <a href="#" onclick="login()"    ><button class="submitBtn formButton">Log in</button></a>
+      <a href="#" onclick="exitLogin()"><div    class="cancelBtn formButton">Exit</div></a>
     </div>
 
     <br></br>
@@ -35,7 +37,7 @@
   </form>
 
   <form class="formContent" method="post" id="signIn" >
-    <div class="header">
+    <div class="header" id="signInHeader">
       <div class="logo"></div>
     </div>
 
@@ -54,9 +56,12 @@
     <!-- <label  class="postStatus" id="signinResponse"><label> -->
 
     <div class="buttonHolder" id="myButttonHolder">
-      <button class="submitBtn formButton"><a href="#" onclick="signin()">Sign in</a></button>
-      <button class="cancelBtn formButton"><a href="#" onclick="exitLogin()">Cancel</a></button>
+      <a href="#" onclick="signin()"   ><button class="submitBtn formButton">Sign in</button></a>
+      <a href="#" onclick="exitLogin()"><div    class="cancelBtn formButton">Exit</div></a>
     </div>
+
+    <br></br>
+    <label id="logInCase">Already have an account.<a href="#" id="redirectToLogIn" onclick="enableLogIn()">Log in</a> </label>
 
   </form>
 </div>

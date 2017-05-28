@@ -51,7 +51,7 @@ function memoryFlipTile(tile, val){
           setTimeout( function(){
              document.getElementById("myGameOver").style.visibility = "hidden";
              document.getElementById("myMemoryGame").style.visibility= "hidden" ;
-             document.getElementById("myStartScreen").style.visibility= "visible" ;
+             document.getElementById("myStartScreen").style.display= "block" ;
              document.getElementById("myCode").style.visibility= "visible" ;
              document.getElementById("myInitCode").style.visibility= "hidden" ;
            }, 3000);

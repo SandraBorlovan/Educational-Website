@@ -25,11 +25,12 @@ function Ghost (x, y) {
   }
 
   this.update = function () {
-    this.stepConsumedTimer();
-    this.calculateDirection();
-    this.checkCollision();
-    this.pos.add(this.dir);
-    // this.checkPortal();
+    if(maze.status == "start"){
+      this.stepConsumedTimer();
+      this.calculateDirection();
+      this.checkCollision();
+      this.pos.add(this.dir);
+    }
   }
 
   this.calculateDirection = function () {

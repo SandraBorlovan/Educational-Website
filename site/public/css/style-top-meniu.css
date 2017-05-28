@@ -52,14 +52,14 @@ ul.topmeniu li a {
 
 .header{
 	width: 100%;
-	height: 30%;
+	height: 20%;
 	display: inline-block;
 }
 
 .logo{
 	width: 50%;
 	height: 100%;
-	background-image: url("../images/bird_cpy.png");
+	background-image: url("../images/bird.png");
 	background-repeat: no-repeat;
 	background-size: contain;
 }
@@ -121,13 +121,17 @@ ul.topmeniu li a {
 	float: right;
 }
 
-#signInCase{
+#signInCase, #logInCase{
 	width: 100%;
 	padding-left: 15%;
 	color: black;
 }
 
-#redirectToSignIn{
+/*#logInCase{
+	padding-left: 5%;
+}*/
+
+#redirectToSignIn, #redirectToLogIn{
 	width: 5%;
 	cursor: pointer;
 	color: green;

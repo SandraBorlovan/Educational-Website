@@ -119,7 +119,7 @@ app.post("/signin", function(req, res){
             if (err)  throw err;
             if(row === undefined){
 
-              db.run("insert into users (username, password, name, email) values (?, ?, ?, ?)", [body.username, body.password, body.name, body.email], insertHandler);
+              db.run("insert into users (username, password, name, email, tutorial_1, tutorial_2, tutorial_3) values (?, ?, ?, ?, ?, ?, ?)", [body.username, body.password, body.name, body.email, "Not attempted", "Not attempted", "Not attempted"], insertHandler);
               function insertHandler(err){
                 if (err) throw err;
               }

@@ -1,5 +1,4 @@
 function Pacman () {
-  this.noParts = 0;
   this.dir = createVector(0,0);
   this.pos = createVector(1, 1);
 

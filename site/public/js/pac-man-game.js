@@ -1,14 +1,10 @@
 var scl = 40;
 var maze;
 var button;
-var maxNoParts = 4;
-
-function setNoParts(no){
-  maxNoParts = no;
-}
 
 
-function setup(){//has to be added as an event
+function setup(){
+
   var width = document.getElementById("myPacmanGame").offsetWidth;
   var height = document.getElementById("myPacmanGame").offsetHeight;
 
@@ -17,10 +13,6 @@ function setup(){//has to be added as an event
 
   maze = new Maze();
   maze.initialize();
-
-  // button = createButton('Start/Reset');
-  // button.position(0, height+scl);
-  // button.mousePressed(reset);
 
 }
 
@@ -31,23 +23,38 @@ function draw() {
 }
 
 function reset() {
-  maze.start();
+
+  // var arrowKeyCodes = [37,38,39,40];
+  // var style = window.getComputedStyle(document.getElementById("myStartScreen"));
+  //
+  // window.addEventListener("keydown", function(e) {
+  //   // space and arrow keys
+  //   if([37, 38, 39, 40].indexOf(e.keyCode) > -1 && style.display == "none" &&  maze.status =="stop") {
+        maze.start();
+  //   }
+  // });
 }
 
 function keyPressed() {
   var arrowKeyCodes = [37,38,39,40];
+  var style = window.getComputedStyle(document.getElementById("myStartScreen"));
 
-  if (arrowKeyCodes.includes(keyCode) && maze.status != "start") {
-    maze.start();
+  if(maze.status == "ready" ){
+    maze.status = "start"
   }
 
-  if (keyCode == LEFT_ARROW) {
-    maze.pacman.setDir(-1,0);
-  } else if (keyCode == RIGHT_ARROW) {
-    maze.pacman.setDir(1,0);
-  } else if (keyCode == DOWN_ARROW) {
-    maze.pacman.setDir(0,1);
-  } else if (keyCode == UP_ARROW) {
-    maze.pacman.setDir(0,-1);
+  if(style.display === "none" && maze.status == "start"){
+
+
+    if (keyCode == LEFT_ARROW) {
+      maze.pacman.setDir(-1,0);
+    } else if (keyCode == RIGHT_ARROW) {
+      maze.pacman.setDir(1,0);
+    } else if (keyCode == DOWN_ARROW) {
+      maze.pacman.setDir(0,1);
+    } else if (keyCode == UP_ARROW) {
+      maze.pacman.setDir(0,-1);
+    }
+
   }
 }
