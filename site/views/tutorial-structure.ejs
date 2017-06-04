@@ -37,68 +37,73 @@
 
 	<body>
 
-    <div class="topPanel">
-      <p>Lesson <%=content.id%>: <%=content.title%></p>
-      <img src="../images/profile.png"></img>
-    </div>
+		<header>
+
+		</header>
+
+		<main>
+
+	    <div class="topPanel">
+	      <p>Lesson <%=content.id%>: <%=content.title%></p>
+	      <img src="<%= content.image %>"></img>
+	    </div>
 
 
-    <div class="mainPanel">
-			<textarea class="code" id="myInitCode"><%=content.init_code%></textarea>
-			<textarea class="code" id="myCode"><%=content.code%></textarea>
-      <div class="terminal"><p class="output" id="myOutput"></p></div>
-			<div id="mycanvas"></div>
-    </div>
+	    <div class="mainPanel">
+				<textarea class="code" id="myInitCode"><%=content.init_code%></textarea>
+				<textarea class="code" id="myCode"><%=content.code%></textarea>
+	      <div class="terminal"><p class="output" id="myOutput"></p></div>
+				<div id="mycanvas"></div>
+	    </div>
 
-    <div class="taskDescription">
-			<h1>Task Description</h1>
-			<p> <%=content.task%> </p>
-			<h3>Let's begin</h3>
-			<p> <%=content.q1%>   </p>
-			<p> <%=content.q2%>   </p>
-			<p> <%=content.hint%> </p>
-		</div>
-
-    <div class="butttonSupport">
-      <div class="button" id="runButton" onclick="runit()">
-        <p>Run Code</p>
-				<!-- <img class="btn" src="../images/run-code-btn.png"></img> -->
-      </div>
-      <!-- <div class="button" id="saveButton">
-        <p>Save Code</p>
-      </div> -->
-      <div class="button" id="playButton">
-        <p><a href="#game">Play Game</a></p>
-      </div>
-    </div>
-
-		<div class="gamePanel" id="myGamePanel">
-			<a name="game"></a>
-			<div class="gameBoard" id="myGameBoard">
-				<div class="screen" id="myStartScreen">
-					<a onclick="startGame(<%=content.id%>)" class="startGameBtn" id="myStartGameBtn">Start Game</a>
-				</div>
-
-				<div class="screen" id="myPacmanGame">
-					<!-- <div class="pacman" id="myPacman"></div> -->
-				</div>
-
-				<div class="screen" id="myMemoryGame">
-				</div>
-
-				<div class="screen" id="myGame">
-				</div>
-
-				<div class="" id="myGameOver">
-					<h3 id="myTitle">Game Over!</h3>
-					<h2 id="myMessage">Well done!</h2>
-				</div>
-
+	    <div class="taskDescription">
+				<h1>Task Description</h1>
+				<p> <%=content.task%> </p>
+				<h3>Let's begin</h3>
+				<p> <%=content.q1%>   </p>
+				<p> <%=content.q2%>   </p>
+				<p> <%=content.hint%> </p>
 			</div>
-		</div>
 
-		<div class="downmeniu" id="myDownMeniu">
-		</div>
+	    <div class="butttonSupport">
+	      <div class="button" id="runButton" onclick="runit()">
+	        <p>Run Code</p>
+	      </div>
+	      <!-- <div class="button" id="saveButton">
+	        <p>Save Code</p>
+	      </div> -->
+	      <div class="button" id="playButton">
+	        <p><a href="#game">Play Game</a></p>
+	      </div>
+	    </div>
 
+			<div class="gamePanel" id="myGamePanel">
+				<a name="game"></a>
+				<div class="gameBoard" id="myGameBoard">
+					<div class="screen" id="myStartScreen">
+						<a onclick="startGame(<%=content.id%>)" class="startGameBtn" id="myStartGameBtn">Start Game</a>
+					</div>
+
+					<div class="screen" id="myPacmanGame">
+					</div>
+
+					<div class="screen" id="myMemoryGame">
+					</div>
+
+					<div class="screen" id="myGame">
+					</div>
+
+					<div class="" id="myGameOver">
+						<h3 id="myTitle">Game Over!</h3>
+						<h2 id="myMessage">Well done!</h2>
+					</div>
+
+				</div>
+			</div>
+
+			<div class="downmeniu" id="myDownMeniu">
+			</div>
+
+		</main>
 	</body>
 </html>

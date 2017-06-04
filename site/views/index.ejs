@@ -18,6 +18,21 @@
 
 	<body>
 		<header>
+			<% if(session.loggedIn){%>
+				<% var username = session.username%>
+				<% var name = session.name%>
+				<% var email = session.email%>
+				<% var loggedIn = session.loggedIn%>
+				<% var password = session.password%>
+				<% var education = session.education%>
+				<% var tutorial_1 = session.tutorial_1%>
+				<% var tutorial_2 = session.tutorial_2%>
+				<% var tutorial_3 = session.tutorial_3%>
+				<% var image = session.image%>
+			<% }else{ %>
+				<% var image = "../images/profile/profile.png"%>
+				<% var loggedIn = session.loggedIn%>
+			<% }%>
 			<% include top-meniu.ejs %>
 		</header>
 
@@ -40,7 +55,11 @@
 						<p>Pete has prepared some really exciting activities filled with games through which you can learn his language.</p>
 					</div>
 					<br></br>
-					<a class="btn" >Get Started</a>
+					<% if(loggedIn == true) {%>
+			      <a class="btn" href="profile.html">Get Started</a>
+			    <% } else { %>
+			      <a class="btn" href="#" onclick="enableLogIn()">Get Started</a>
+			    <% } %>
 					<br></br>
 				</div>
 

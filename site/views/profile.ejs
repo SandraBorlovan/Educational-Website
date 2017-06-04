@@ -29,6 +29,10 @@
 				<% var tutorial_1 = session.tutorial_1%>
 				<% var tutorial_2 = session.tutorial_2%>
 				<% var tutorial_3 = session.tutorial_3%>
+				<% var image = session.image%>
+			<% }else{ %>
+				<% var image = "../images/profile/profile.png" %>
+				<% var loggedIn = session.loggedIn %>
 			<% }%>
 
   		<% include top-meniu.ejs %>
@@ -40,9 +44,9 @@
     </div>
 
     <div class="shadowBox profile">
-      <img src="../images/profile.png"></img>
+      <img src="<%= image %>"></img>
       <a href="#personalise" class="profileBtn">Change Photo</a>
-			<a onclick="logout" class="profileBtn" id="logOutBtn">Log Out</a>
+			<a onclick="logout()" class="profileBtn" id="logOutBtn">Log Out</a>
     </div>
 
     <hr/>
@@ -78,7 +82,7 @@
 						<img id="img5" onclick="selectImage('img5')" src="../images/profile/tiger.png"></img>
 						<img id="img6" onclick="selectImage('img6')" src="../images/profile/girafe.png"></img>
 					</div>
-					<a href="#" onclick="changeImage()" class="submitModif"><div>Change Image</div></a>
+					<a href="#" onclick="changeImage()" class="submitModif" id="changeImageBtn"><div>Change Image</div></a>
 				</div>
 			</div>
 
@@ -106,7 +110,7 @@
 					<input type="text" id="dsp_education" name="education" value="<%= education %>">
 					<br></br>
 
-					<a href="#" onclick="modifyDetails()" class="submitModif"><div>Save modifications</div></a>
+					<a href="#" onclick="modifyDetails()" class="submitModif" id="changeDetailsBtn"><div>Save modifications</div></a>
 				</form>
 			</div>
 

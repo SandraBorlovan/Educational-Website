@@ -1,4 +1,5 @@
 var imageSelected = "";
+
 function selectImage(newImage){
   if( imageSelected != ""){
       document.getElementById(imageSelected).style.boxShadow = "5px 10px 15px grey";
@@ -8,7 +9,13 @@ function selectImage(newImage){
 }
 
 function changeImage(){
-  
+
+  var image = document.getElementById(imageSelected).src;
+
+  var info = {}
+  info["image"]  = image;
+
+  sendRequest('POST', '/changeImage', true, JSON.stringify(info));
 }
 
 function enableLogIn(){
@@ -27,13 +34,18 @@ function login(){
   var username = document.getElementById('username').value;
   var password = document.getElementById('password').value;
 
-  var info = {}
-  info["username"] = username;
-  info["password"] = password;
+  if(username == ""){
+    alert("Username field cannot be empty");
+  }else if(password == ""){
+    alert("Password field cannot be empty");
+  }else{
 
-  console.log("Log in with", info);
+    var info = {}
+    info["username"] = username;
+    info["password"] = password;
 
-  sendRequest('POST', '/login', true, JSON.stringify(info));
+    sendRequest('POST', '/login', true, JSON.stringify(info));
+  }
 }
 
 function signin(){
@@ -42,15 +54,24 @@ function signin(){
   var email    = document.getElementById('sg_email').value;
   var password = document.getElementById('sg_password').value;
 
-  var info = {}
-  info["username"] = username;
-  info["password"] = password;
-  info["email"]    = email;
-  info["name"]     = name;
+  if(username == ""){
+    alert("Username field cannot be empty");
+  }else if(password == ""){
+    alert("Password field cannot be empty");
+  }else if(email == ""){
+    alert("Email field cannot be empty");
+  }else if(name == ""){
+    alert("Name field cannot be empty");
+  }else{
 
-  console.log("Sign in with", info);
+    var info = {}
+    info["username"] = username;
+    info["password"] = password;
+    info["email"]    = email;
+    info["name"]     = name;
 
-  sendRequest('POST', '/signin', true, JSON.stringify(info));
+    sendRequest('POST', '/signin', true, JSON.stringify(info));
+  }
 }
 
 function logout(){
@@ -73,23 +94,22 @@ function modifyDetails(){
   info["email"]     = email;
   info["name"]      = name;
 
-  console.log("In modifyDetails:", info);
-
   sendRequest('POST', '/modif', true, JSON.stringify(info));
 
 }
 
 function sendRequest(method, section, syncValue, data){
-  console.log("Received post request to", section);
+
+  var displayedResponse = false;
   var q = new XMLHttpRequest();
   q.onreadystatechange = receive;
   q.open(method, section, syncValue);
   q.send(data);
   function receive(response){
-    if(this.response != ""){
+    if(this.response != "" && displayedResponse==false){
       var response = JSON.parse(this.response);
-      console.log(response.loginResponse);
-      // document.getElementById("loginResponse").innerHTML = response.loginResponse;
+      alert(response.loginResponse);
+      displayedResponse = true;
     }
     if (this.readyState == 4 && this.status == 200) {
       location.reload();

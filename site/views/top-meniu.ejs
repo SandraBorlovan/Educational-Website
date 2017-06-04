@@ -1,9 +1,15 @@
 <ul class="topmeniu" id="myTopmeniu">
   <li><a href="index.html">About</a></li>
-  <li><a href="profile.html">Home</a></li>
+  <li>
+    <% if(loggedIn == true) {%>
+      <a href="profile.html">Home</a>
+    <% } else { %>
+      <a href="#" onclick="enableLogIn()">Home</a>
+    <% } %>
+  </li>
   <li><a href="tutorials.html">Tutorials</a></li>
 
-  <img class="dropBtn" src="../images/profile.png" onclick="enableLogIn()"></img>
+  <img class="dropBtn" src="<%= image %>" onclick="enableLogIn()"></img>
 </ul>
 
 <div class="overShadow" id="myLogInWindow" >
@@ -11,17 +17,15 @@
   <form class="formContent" method="post" id="logIn">
     <div class="header" id="logInHeader">
       <div class="logo"></div>
-      <!-- <label class="loginTitle">FunCode</label> -->
-      <!-- <p>FunCode<p> -->
     </div>
 
     <br></br>
     <br></br>
     <label>Username</label>
-    <input type="text" id="username" name="username" placeholder="Your username..">
+    <input type="text" id="username" name="username" placeholder="Your username.." required="required">
 
     <label>Password</label>
-    <input type="text" id="password" name="password" placeholder="Your password..">
+    <input type="text" id="password" name="password" placeholder="Your password.." required="required">
 
     <!-- <label class="postStatus" id="loginResponse"><label> -->
 
@@ -33,7 +37,6 @@
 
     <br></br>
     <br></br>
-    <br></br>
     <label id="signInCase">Don't have an account. <a href="#" id="redirectToSignIn" onclick="enableSignIn()">Sign in</a> </label>
   </form>
 
@@ -43,16 +46,16 @@
     </div>
 
     <label>Name</label>
-    <input type="text" id="sg_name" name="name" placeholder="Your name..">
+    <input type="text" id="sg_name" name="name" placeholder="Your name.." required="required">
 
     <label>Username</label>
-    <input type="text" id="sg_username" name="username" placeholder="Your username..">
+    <input type="text" id="sg_username" name="username" placeholder="Your username.." required="required">
 
     <label>Email</label>
-    <input type="text" id="sg_email" name="password" placeholder="Your email..">
+    <input type="text" id="sg_email" name="password" placeholder="Your email.." required="required">
 
     <label>Password</label>
-    <input type="text" id="sg_password" name="password" placeholder="Your password..">
+    <input type="text" id="sg_password" name="password" placeholder="Your password.." required="required">
 
     <!-- <label  class="postStatus" id="signinResponse"><label> -->
 
@@ -61,8 +64,6 @@
       <a href="#" onclick="exitLogin()" class="cancelBtn formButton"><p>Exit</p></a>
     </div>
 
-    <br></br>
-    <br></br>
     <br></br>
     <label id="logInCase">Already have an account.<a href="#" id="redirectToLogIn" onclick="enableLogIn()">Log in</a> </label>
 

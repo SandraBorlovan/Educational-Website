@@ -49,7 +49,6 @@ app.get("/index.html", function(req, res){
 
 app.get("/profile.html", function(req, res){
   var sess = req.session;
-  console.log("in profile: " + sess);
   res.render("profile", {
               session: sess
           });
@@ -65,6 +64,7 @@ app.get("/tutorials.html", function(req, res){
 app.get("/tutorial-structure.html/id=:id", function(req, res){
   var content = {};
   var requestId = req.params.id;
+  var sess = req.session;
 
   db.all('select * from tutorials where id= ?', requestId, handler);
 
@@ -77,9 +77,15 @@ app.get("/tutorial-structure.html/id=:id", function(req, res){
     content['hint']  = row[0].hint;
     content['init_code']  = row[0].init_code;
     content['code']  = row[0].code;
+    if(sess.loggedIn === true){
+      content['image']  = sess.image;
+    }else{
+      content['image'] = "../images/profile/profile.png";
+    }
 
     res.render('tutorial-structure',{
-      content : content
+      content : content,
+      session: sess
     });
   }
 });
@@ -120,14 +126,13 @@ app.post("/login", function(req, res){
               sess.tutorial_1 = row.tutorial_1;
               sess.tutorial_2 = row.tutorial_2;
               sess.tutorial_3 = row.tutorial_3;
+              sess.image      = row.image;
             }else{
               response["loginResponse"] = "Incorrect password";
               response["loggedIn"] = false;
 
               sess.loggedIn = false;
             }
-            console.log(response);
-            console.log(sess);
             res.send(JSON.stringify(response));
         }
     }
@@ -142,20 +147,17 @@ app.post("/signin", function(req, res){
 
   function add(chunk){
       body = body + chunk.toString();
-      console.log("Finishing add in /signin");
   }
   function end(){
-        console.log("Entered end in /signin");
         body = JSON.parse(body);
         db.get("select * from users where username= ?", body.username, handler);
 
 
         function handler(err, row){
-            console.log("Entered in handle");
             if (err)  throw err;
             if(row === undefined){
 
-              db.run("insert into users (username, password, name, email, tutorial_1, tutorial_2, tutorial_3) values (?, ?, ?, ?, ?, ?, ?)", [body.username, body.password, body.name, body.email, "Not attempted", "Not attempted", "Not attempted"], insertHandler);
+              db.run("insert into users (username, password, name, email, tutorial_1, tutorial_2, tutorial_3, image) values (?, ?, ?, ?, ?, ?, ?, ?)", [body.username, body.password, body.name, body.email, "Not attempted", "Not attempted", "Not attempted", "../images/profile/profile.png"], insertHandler);
               function insertHandler(err){
                 if (err) throw err;
               }
@@ -164,13 +166,14 @@ app.post("/signin", function(req, res){
 
               sess.loggedIn   = true;
               sess.username   = body.username;
-              sess.name       = row.name;
-              sess.email      = row.email;
-              sess.password   = row.password;
-              sess.education  = row.education;
-              sess.tutorial_1 = row.tutorial_1;
-              sess.tutorial_2 = row.tutorial_2;
-              sess.tutorial_3 = row.tutorial_3;
+              sess.name       = body.name;
+              sess.email      = body.email;
+              sess.password   = body.password;
+              sess.education  = "";
+              sess.tutorial_1 ="Not attempted";
+              sess.tutorial_2 = "Not attempted";
+              sess.tutorial_3 = "Not attempted";
+              sess.image      = "../images/profile/profile.png";
 
             }else{
               response["loginResponse"] = "Username already exists";
@@ -178,8 +181,6 @@ app.post("/signin", function(req, res){
 
               sess.loggedIn = false;
             }
-            console.log(response);
-            console.log(sess);
             res.send(JSON.stringify(response));
         }
     }
@@ -199,7 +200,9 @@ app.post("/logout", function(req, res){
   sess.tutorial_1 = "";
   sess.tutorial_2 = "";
   sess.tutorial_3 = "";
+  sess.image      = "../images/profile/profile.png";
 
+  var response = {};
   response["loginResponse"] = "Log out succesfull ";
   response["loggedIn"] = false;
   res.send(JSON.stringify(response));
@@ -225,7 +228,7 @@ app.post("/modif", function(req, res){
           if(row === undefined){
 
             response["loginResponse"] = "Username is undefined";
-            response["loggedIn"] = false;
+            response["loggedIn"] = true;
 
           }else{
             db.run("update users set username = ?, password = ?, email = ?, education = ? where id = ?", [body.username, body.password, body.email, body.education, row.id], insertHandler);
@@ -240,6 +243,47 @@ app.post("/modif", function(req, res){
             sess.password  = body.password;
             sess.email     = body.email;
             sess.education = body.education;
+
+            response["loginResponse"] = "Modification succesfull ";
+            response["loggedIn"] = true;
+          }
+
+          res.send(JSON.stringify(response));
+        }
+    }
+});
+
+app.post("/changeImage", function(req, res){
+  var sess = req.session;
+  var body = "";
+  req.on('data', add);
+  req.on('end', end);
+  var response = {};
+
+  function add(chunk){
+      body = body + chunk.toString();
+  }
+  function end(){
+        body = JSON.parse(body);
+        db.get("select * from users where username= ?", sess.username, handler);
+
+        function handler(err, row){
+          if (err)  throw err;
+          if(row === undefined){
+
+            response["loginResponse"] = "Username is undefined";
+            response["loggedIn"] = true;
+
+          }else{
+            db.run("update users set image = ? where id = ?", [body.image, row.id], insertHandler);
+            function insertHandler(err){
+              if (err) throw err;
+              response["loginResponse"] = "Update image failed ";
+              response["loggedIn"] = true;
+            }
+
+            sess.loggedIn = true;
+            sess.image     = body.image;
 
             response["loginResponse"] = "Modification succesfull ";
             response["loggedIn"] = true;
