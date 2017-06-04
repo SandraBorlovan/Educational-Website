@@ -41,7 +41,8 @@
 
     <div class="shadowBox profile">
       <img src="../images/profile.png"></img>
-      <a class="profileBtn">Change Photo</a>
+      <a href="#personalise" class="profileBtn">Change Photo</a>
+			<a onclick="logout" class="profileBtn" id="logOutBtn">Log Out</a>
     </div>
 
     <hr/>
@@ -61,25 +62,27 @@
 			 	</li>
     	</ul>
 
-			<div class="topicDisplay" id="topic_1">
+			<div class="topicDisplay">
+			<div class="" id="topic_1">
 				<br></br>
+				<a name="personalise"></a>
 				<h1>Personalise</h1>
 				<div class = "profileImages" id="myProfileImages">
 					<div class="imagesRow" id="myImagesRow">
 						<img id="img1" onclick="selectImage('img1')" src="../images/profile/hippo.png"></img>
 						<img id="img2" onclick="selectImage('img2')" src="../images/profile/dino.png"></img>
 						<img id="img3" onclick="selectImage('img3')" src="../images/profile/zebra.png"></img>
-					<div>
+					</div>
 					<div class="imagesRow" id="myImagesRow">
 						<img id="img4" onclick="selectImage('img4')" src="../images/profile/elephant.png"></img>
 						<img id="img5" onclick="selectImage('img5')" src="../images/profile/tiger.png"></img>
 						<img id="img6" onclick="selectImage('img6')" src="../images/profile/girafe.png"></img>
-					<div>
-					<a href="#" onclick="changeImage()" class="submitBtn"><div>Change Image</div></a>
+					</div>
+					<a href="#" onclick="changeImage()" class="submitModif"><div>Change Image</div></a>
 				</div>
 			</div>
 
-			<div class="topicDisplay" id="topic_2">
+			<div class="" id="topic_2">
 				<br></br>
 				<h1>User Details</h1>
 				<form class="detailsContent" id ="myDetails" action="/login" method="post">
@@ -103,11 +106,11 @@
 					<input type="text" id="dsp_education" name="education" value="<%= education %>">
 					<br></br>
 
-					<a href="#" onclick="modifyDetails()" class="submitBtn"><div>Save modifications</div></a>
+					<a href="#" onclick="modifyDetails()" class="submitModif"><div>Save modifications</div></a>
 				</form>
 			</div>
 
-			<div class="topicDisplay" id="topic_3">
+			<div class="" id="topic_3">
 				<br></br>
 				<h1>Tutorials</h1>
 				<div class="detailsContent" id="myTutorials">
@@ -125,6 +128,7 @@
 					</div>
 				</div>
 			</div>
+		</div>
 
 	  </div>
 

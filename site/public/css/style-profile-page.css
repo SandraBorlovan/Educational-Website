@@ -42,7 +42,7 @@ div.profile{
 }
 
 div.shadowBox{
-  height : 45%;
+  height : 50%;
 	width : 15%;
 	align-items: center;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -51,6 +51,7 @@ div.shadowBox{
 }
 
 a.profileBtn{
+	width: 60%;
   background-color: rgb(233, 173, 0);
   border: none;
   color: black;
@@ -64,8 +65,16 @@ a.profileBtn{
 }
 
 a.profileBtn:hover{
-  border: 2px solid #4CAF50;
+  /*border: 2px solid #4CAF50;*/
+	box-shadow: 0px 4px 4px rgba(34,62,66,.5);
+	-webkit-transition: box-shadow 1s ease;
+	transition: box-shadow 1s ease;
 }
+
+#logOutBtn{
+
+}
+
 .sideMeniu{
     margin: 0px;
 }
@@ -139,7 +148,8 @@ hr {
 }
 
 #topic_1{
-  visibility: visible;
+	display: block;
+	position: relative;
 }
 
 .profileImages{
@@ -163,7 +173,8 @@ hr {
 }
 
 #topic_2{
-  visibility: hidden;
+	display: none;
+	position: relative;
 }
 
 .detailsContent{
@@ -201,11 +212,12 @@ hr {
 }
 
 #topic_3{
-  visibility: hidden;
+	display: none;
+	position: relative;
 }
 
-.submitBtn{
-	background-color: rgb(4,146,70);;
+.submitModif{
+	background-color: rgb(4,146,70);
 	border: none;
 	color: white;
 	padding: 15px 32px;
@@ -213,15 +225,14 @@ hr {
 	text-decoration: none;
 	display: inline-block;
 	font-size: 20px;
-	margin-left: 45%;
+	margin-left: 40%;
 	margin-top: 4%;
 	cursor: pointer;
 }
 
 #myDownMeniu{
-	width: 109%;
-  left: -9%;
+	width: 100%;
   position: absolute;
   background-color: rgb(233, 173, 0);
-  top: 105%;
+  top: 250%;
 }
