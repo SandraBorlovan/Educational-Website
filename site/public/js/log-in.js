@@ -40,6 +40,32 @@ function signin(){
   sendRequest('POST', '/signin', true, JSON.stringify(info));
 }
 
+function logout(){
+  var info = {}
+  sendRequest('POST', '/logout', true, JSON.stringify(info));
+}
+
+function modifyDetails(){
+
+  var name      = document.getElementById('dsp_name').value;
+  var username  = document.getElementById('dsp_username').value;
+  var password  = document.getElementById('dsp_password').value;
+  var email     = document.getElementById('dsp_email').value;
+  var education = document.getElementById('dsp_education').value;
+
+  var info = {}
+  info["username"]  = username;
+  info["education"] = education;
+  info["password"]  = password;
+  info["email"]     = email;
+  info["name"]      = name;
+
+  console.log("In modifyDetails:", info);
+
+  sendRequest('POST', '/modif', true, JSON.stringify(info));
+
+}
+
 function sendRequest(method, section, syncValue, data){
   console.log("Received post request to", section);
   var q = new XMLHttpRequest();

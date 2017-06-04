@@ -20,6 +20,17 @@
 	<body>
 
 		<header>
+			<% if(session.loggedIn){%>
+				<% var username = session.username%>
+				<% var name = session.name%>
+				<% var email = session.email%>
+				<% var password = session.password%>
+				<% var education = session.education%>
+				<% var tutorial_1 = session.tutorial_1%>
+				<% var tutorial_2 = session.tutorial_2%>
+				<% var tutorial_3 = session.tutorial_3%>
+			<% }%>
+
   		<% include top-meniu.ejs %>
 		</header>
 
@@ -60,22 +71,26 @@
 				<h1>User Details</h1>
 				<form class="detailsContent" id ="myDetails" action="/login" method="post">
 					<label>Name</label>
-					<input type="text" id="dsp_name" name="name" placeholder="Your name..">
+					<input type="text" id="dsp_name" name="name" value="<%= name %>">
 					<br></br>
 
 					<label>Username</label>
-					<input type="text" id="dsp_username" name="username" placeholder="Your username..">
+					<input type="text" id="dsp_username" name="username" value="<%= username %>">
+					<br></br>
+
+					<label>Password</label>
+					<input type="text" id="dsp_password" name="password" value="<%= password %>">
 					<br></br>
 
 					<label>Email</label>
-					<input type="text" id="dsp_email" name="email" placeholder="Your email..">
+					<input type="text" id="dsp_email" name="email" value="<%= email %>" >
 					<br></br>
 
 					<label>Education:</label>
-					<input type="text" id="dsp_education" name="education" placeholder="Your education..">
+					<input type="text" id="dsp_education" name="education" value="<%= education %>">
 					<br></br>
 
-					<button class="submitBtn" type="sumbit">Save modifications</button>
+					<a href="#" onclick="modifyDetails()" class="submitBtn"><div>Save modifications</div></a>
 				</form>
 			</div>
 
@@ -85,15 +100,15 @@
 				<div class="detailsContent" id="myTutorials">
 					<div class="row">
 						<h2>Tutorial 1: String Manipulation</h2>
-						<p>Completed<p>
+						<p><%= tutorial_1 %><p>
 					</div>
 					<div class="row">
 						<h2>Tutorial 2: If Statements and Booleans</h2>
-						<p>Not attempted<p>
+						<p><%= tutorial_2 %><p>
 					</div>
 					<div class="row">
 						<h2>Tutorial 3: Lists and Functions</h2>
-						<p>Not attempted<p>
+						<p><%= tutorial_3 %><p>
 					</div>
 				</div>
 			</div>

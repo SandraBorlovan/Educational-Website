@@ -13,6 +13,7 @@
 // privilege issues and port number 80 isn't already in use.
 
 var express = require("express");
+var session = require("express-session");
 var http = require("http");
 var fs = require("fs");
 var path = require("path");
@@ -28,20 +29,37 @@ app.use(express.static("public", options));
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
+app.set('trust proxy', 1); // trust first proxy
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { maxAge: 9000000 }
+}));
 
 var OK = 200, NotFound = 404, BadType = 415, Error = 500;
 var types, banned;
 
 app.get("/index.html", function(req, res){
-  res.render("index");
+  var sess = req.session;
+  res.render("index", {
+              session: sess
+          });
 });
 
 app.get("/profile.html", function(req, res){
-  res.render("profile");
+  var sess = req.session;
+  console.log("in profile: " + sess);
+  res.render("profile", {
+              session: sess
+          });
 });
 
 app.get("/tutorials.html", function(req, res){
-  res.render("tutorials");
+  var sess = req.session;
+  res.render("tutorials",{
+              session: sess
+          });
 });
 
 app.get("/tutorial-structure.html/id=:id", function(req, res){
@@ -68,6 +86,8 @@ app.get("/tutorial-structure.html/id=:id", function(req, res){
 
 
 app.post("/login", function(req, res){
+  var sess = req.session;
+
   var body = "";
   req.on('data', add);
   req.on('end', end);
@@ -85,20 +105,36 @@ app.post("/login", function(req, res){
             if(row === undefined){
               response["loginResponse"] = "No such user";
               response["loggedIn"] = false;
+
+              sess.loggedIn = false;
             }else if( row.password === body.password){
               response["loginResponse"] = "Log in succesfull";
               response["loggedIn"] = true;
+
+              sess.loggedIn   = true;
+              sess.username   = body.username;
+              sess.name       = row.name;
+              sess.email      = row.email;
+              sess.password   = row.password;
+              sess.education  = row.education;
+              sess.tutorial_1 = row.tutorial_1;
+              sess.tutorial_2 = row.tutorial_2;
+              sess.tutorial_3 = row.tutorial_3;
             }else{
               response["loginResponse"] = "Incorrect password";
               response["loggedIn"] = false;
+
+              sess.loggedIn = false;
             }
             console.log(response);
+            console.log(sess);
             res.send(JSON.stringify(response));
         }
     }
 });
 
 app.post("/signin", function(req, res){
+  var sess = req.session;
   var body = "";
   req.on('data', add);
   req.on('end', end);
@@ -108,7 +144,7 @@ app.post("/signin", function(req, res){
       body = body + chunk.toString();
       console.log("Finishing add in /signin");
   }
-  function end(){;
+  function end(){
         console.log("Entered end in /signin");
         body = JSON.parse(body);
         db.get("select * from users where username= ?", body.username, handler);
@@ -126,12 +162,90 @@ app.post("/signin", function(req, res){
               response["loginResponse"] = "Sign in succesfull ";
               response["loggedIn"] = true;
 
+              sess.loggedIn   = true;
+              sess.username   = body.username;
+              sess.name       = row.name;
+              sess.email      = row.email;
+              sess.password   = row.password;
+              sess.education  = row.education;
+              sess.tutorial_1 = row.tutorial_1;
+              sess.tutorial_2 = row.tutorial_2;
+              sess.tutorial_3 = row.tutorial_3;
+
             }else{
               response["loginResponse"] = "Username already exists";
               response["loggedIn"] = false;
+
+              sess.loggedIn = false;
             }
             console.log(response);
+            console.log(sess);
             res.send(JSON.stringify(response));
+        }
+    }
+});
+
+
+app.post("/logout", function(req, res){
+
+  var sess = req.session;
+
+  sess.loggedIn = false;
+  sess.username   = "";
+  sess.name       = "";
+  sess.email      = "";
+  sess.password   = "";
+  sess.education  = "";
+  sess.tutorial_1 = "";
+  sess.tutorial_2 = "";
+  sess.tutorial_3 = "";
+
+  response["loginResponse"] = "Log out succesfull ";
+  response["loggedIn"] = false;
+  res.send(JSON.stringify(response));
+
+});
+
+app.post("/modif", function(req, res){
+  var sess = req.session;
+  var body = "";
+  req.on('data', add);
+  req.on('end', end);
+  var response = {};
+
+  function add(chunk){
+      body = body + chunk.toString();
+  }
+  function end(){
+        body = JSON.parse(body);
+        db.get("select * from users where username= ?", body.username, handler);
+
+        function handler(err, row){
+          if (err)  throw err;
+          if(row === undefined){
+
+            response["loginResponse"] = "Username is undefined";
+            response["loggedIn"] = false;
+
+          }else{
+            db.run("update users set username = ?, password = ?, email = ?, education = ? where id = ?", [body.username, body.password, body.email, body.education, row.id], insertHandler);
+            function insertHandler(err){
+              if (err) throw err;
+              response["loginResponse"] = "Update failed ";
+              response["loggedIn"] = true;
+            }
+
+            sess.loggedIn = true;
+            sess.username  = body.username;
+            sess.password  = body.password;
+            sess.email     = body.email;
+            sess.education = body.education;
+
+            response["loginResponse"] = "Modification succesfull ";
+            response["loggedIn"] = true;
+          }
+
+          res.send(JSON.stringify(response));
         }
     }
 });
