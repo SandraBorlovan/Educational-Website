@@ -1,3 +1,16 @@
+var imageSelected = "";
+function selectImage(newImage){
+  if( imageSelected != ""){
+      document.getElementById(imageSelected).style.boxShadow = "5px 10px 15px grey";
+  }
+  document.getElementById(newImage).style.boxShadow = "5px 10px 15px green";
+  imageSelected = newImage;
+}
+
+function changeImage(){
+  
+}
+
 function enableLogIn(){
   document.getElementById('myLogInWindow').style.display = 'block';
   document.getElementById('logIn').style.display = 'block';
