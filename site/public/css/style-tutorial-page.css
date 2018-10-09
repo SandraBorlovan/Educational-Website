@@ -67,3 +67,11 @@ a.btn:hover {
 	transition: box-shadow 1s ease;
 	color: white;
 }
+
+#myDownMeniu p{
+	padding-left: 33%;
+	padding-top: 5%;
+	color: white;
+	font-size: 20px;
+	font-family: "Bookman";
+}

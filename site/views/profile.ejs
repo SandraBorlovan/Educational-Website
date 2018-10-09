@@ -5,27 +5,48 @@
 		<link href="../css/style-top-meniu.css" rel="stylesheet" type="text/css"></link>
 		<link href="../css/style-profile-page.css" rel="stylesheet" type="text/css"></link>
 
+		<!-- Added favicon -->
+		<link rel="apple-touch-icon" sizes="180x180" href="../favicons/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="../favicons/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="../favicons/favicon-16x16.png">
+		<link rel="manifest" href="../favicons/manifest.json">
+		<link rel="mask-icon" href="../favicons/safari-pinned-tab.svg" color="#5bbad5">
+		<meta name="theme-color" content="#ffffff">
+
 		<script src="../js/tutorial.js"></script>
+		<script src="../js/log-in.js"></script>
 	</head>
 
 	<body>
 
-  	<div>
-			<ul class="topmeniu" id="myTopmeniu">
-				<li><a href="index.html">About</a></li>
-				<li><a href="profile.html">Home</a></li>
-				<li><a href="tutorials.html">Tutorials</a></li>
-				<img src="../images/profile.png"></img>
-			</ul>
-		</div>
+		<header>
+			<% if(session.loggedIn){%>
+				<% var username = session.username%>
+				<% var name = session.name%>
+				<% var email = session.email%>
+				<% var password = session.password%>
+				<% var education = session.education%>
+				<% var tutorial_1 = session.tutorial_1%>
+				<% var tutorial_2 = session.tutorial_2%>
+				<% var tutorial_3 = session.tutorial_3%>
+				<% var image = session.image%>
+			<% }else{ %>
+				<% var image = "../images/profile/profile.png" %>
+				<% var loggedIn = session.loggedIn %>
+			<% }%>
 
+  		<% include top-meniu.ejs %>
+		</header>
+
+		<main>
     <div class="wideCanvas">
       <img src="../images/colors.jpg"></img>
     </div>
 
     <div class="shadowBox profile">
-      <img src="../images/profile.png"></img>
-      <a class="profileBtn">Change Photo</a>
+      <img src="<%= image %>"></img>
+      <a href="#personalise" class="profileBtn">Change Photo</a>
+			<a onclick="logout()" class="profileBtn" id="logOutBtn">Log Out</a>
     </div>
 
     <hr/>
@@ -45,55 +66,79 @@
 			 	</li>
     	</ul>
 
-			<div class="topicDisplay" id="topic_1">
+			<div class="topicDisplay">
+			<div class="" id="topic_1">
 				<br></br>
+				<a name="personalise"></a>
 				<h1>Personalise</h1>
+				<div class = "profileImages" id="myProfileImages">
+					<div class="imagesRow" id="myImagesRow">
+						<img id="img1" onclick="selectImage('img1')" src="../images/profile/hippo.png"></img>
+						<img id="img2" onclick="selectImage('img2')" src="../images/profile/dino.png"></img>
+						<img id="img3" onclick="selectImage('img3')" src="../images/profile/zebra.png"></img>
+					</div>
+					<div class="imagesRow" id="myImagesRow">
+						<img id="img4" onclick="selectImage('img4')" src="../images/profile/elephant.png"></img>
+						<img id="img5" onclick="selectImage('img5')" src="../images/profile/tiger.png"></img>
+						<img id="img6" onclick="selectImage('img6')" src="../images/profile/girafe.png"></img>
+					</div>
+					<a href="#" onclick="changeImage()" class="submitModif" id="changeImageBtn"><div>Change Image</div></a>
+				</div>
 			</div>
 
-			<div class="topicDisplay" id="topic_2">
+			<div class="" id="topic_2">
 				<br></br>
 				<h1>User Details</h1>
 				<form class="detailsContent" id ="myDetails" action="/login" method="post">
 					<label>Name</label>
-					<input type="text" id="name" name="name" placeholder="Your name..">
+					<input type="text" id="dsp_name" name="name" value="<%= name %>">
 					<br></br>
 
 					<label>Username</label>
-					<input type="text" id="username" name="username" placeholder="Your username..">
+					<input type="text" id="dsp_username" name="username" value="<%= username %>">
+					<br></br>
+
+					<label>Password</label>
+					<input type="text" id="dsp_password" name="password" value="<%= password %>">
 					<br></br>
 
 					<label>Email</label>
-					<input type="text" id="email" name="email" placeholder="Your email..">
+					<input type="text" id="dsp_email" name="email" value="<%= email %>" >
 					<br></br>
 
 					<label>Education:</label>
-					<input type="text" id="education" name="education" placeholder="Your education..">
+					<input type="text" id="dsp_education" name="education" value="<%= education %>">
 					<br></br>
 
-					<button class="submitBtn" type="sumbit">Save modifications</button>
+					<a href="#" onclick="modifyDetails()" class="submitModif" id="changeDetailsBtn"><div>Save modifications</div></a>
 				</form>
 			</div>
 
-			<div class="topicDisplay" id="topic_3">
+			<div class="" id="topic_3">
 				<br></br>
 				<h1>Tutorials</h1>
 				<div class="detailsContent" id="myTutorials">
 					<div class="row">
 						<h2>Tutorial 1: String Manipulation</h2>
-						<p>Completed<p>
+						<p><%= tutorial_1 %><p>
 					</div>
 					<div class="row">
 						<h2>Tutorial 2: If Statements and Booleans</h2>
-						<p>Not attempted<p>
+						<p><%= tutorial_2 %><p>
 					</div>
 					<div class="row">
 						<h2>Tutorial 3: Lists and Functions</h2>
-						<p>Not attempted<p>
+						<p><%= tutorial_3 %><p>
 					</div>
 				</div>
 			</div>
+		</div>
 
 	  </div>
+
+		<div class="downmeniu" id="myDownMeniu">
+		</div>
+	</main>
 
 	</body>
 </html>

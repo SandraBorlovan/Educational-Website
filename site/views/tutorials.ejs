@@ -6,57 +6,79 @@
 		<link href="css/style-tutorial-page.css" rel="stylesheet" type="text/css"></link>
 		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"></link>
 
+		<!-- Added favicon -->
+		<link rel="apple-touch-icon" sizes="180x180" href="../favicons/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="../favicons/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="../favicons/favicon-16x16.png">
+		<link rel="manifest" href="../favicons/manifest.json">
+		<link rel="mask-icon" href="../favicons/safari-pinned-tab.svg" color="#5bbad5">
+		<meta name="theme-color" content="#ffffff">
+
 		<script src="js/tutorial.js"></script>
+		<script src="../js/log-in.js"></script>
 		<script src="js/jquery.min.js"></script>
 		<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 	</head>
 
 	<body>
 
-  	<div>
-			<ul class="topmeniu" id="myTopmeniu">
-				<li><a href="index.html">About</a></li>
-				<li><a href="profile.html">Home</a></li>
-				<li><a href="tutorials.html">Tutorials</a></li>
-				<img src="../images/profile.png"></img>
-			</ul>
-		</div>
+		<header>
+			<% if(session.loggedIn){%>
+				<% var username = session.username%>
+				<% var name = session.name%>
+				<% var email = session.email%>
+				<% var loggedIn = session.loggedIn%>
+				<% var password = session.password%>
+				<% var education = session.education%>
+				<% var tutorial_1 = session.tutorial_1%>
+				<% var tutorial_2 = session.tutorial_2%>
+				<% var tutorial_3 = session.tutorial_3%>
+				<% var image = session.image%>
+			<% }else{ %>
+				<% var image = "../images/profile/profile.png"%>
+				<% var loggedIn = session.loggedIn%>
+			<% }%>
+			<% include top-meniu.ejs %>
+		</header>
 
+		<main>
 
-			<div class="row">
-				<div class="col-md-12">
-					<div class="greetingMessage">
-						<h1>Python 2 Tutorials</h1>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="greetingMessage">
+							<h1>Python 2 Tutorials</h1>
+						</div>
 					</div>
 				</div>
-			</div>
 
-			<div class="listTutorials">
-				<div class="row">
-    			<div class="col-md-4 shadowBox">
-							<img src="/images/angry_birds.jpg" class="gameImage"></img>
-							<h3>Lesson 1</h3>
-							<h4>String Manipulation</h4>
-							<a class="btn" href="tutorial-structure.html/id=1" > Start tutorial</a>
-    			</div>
-    			<div class="col-md-4 shadowBox">
-							<img src="/images/pac_man.jpg" class="gameImage"></img>
-							<h3>Lesson 2</h3>
-							<h4>If Statements and Booleans</h4>
-							<a class="btn" href="tutorial-structure.html/id=2" > Start tutorial</a>
-    			</div>
-					<div class="col-md-4 shadowBox">
-							<img src="/images/maze.jpg" class="gameImage"></img>
-							<h3>Lesson 3</h3>
-							<h4>Lists and Functions</h4>
-							<a class="btn" href="tutorial-structure.html/id=3" > Start tutorial</a>
-    			</div>
-  			</div>
-			</div>
+				<div class="listTutorials">
+					<div class="row">
+	    			<div class="col-md-4 shadowBox">
+								<img src="/images/angry_birds.jpg" class="gameImage"></img>
+								<h3>Lesson 1</h3>
+								<h4>String Manipulation</h4>
+								<a class="btn" href="tutorial-structure.html/id=1" > Start tutorial</a>
+	    			</div>
+	    			<div class="col-md-4 shadowBox">
+								<img src="/images/pac_man.jpg" class="gameImage"></img>
+								<h3>Lesson 2</h3>
+								<h4>If Statements and Booleans</h4>
+								<a class="btn" href="tutorial-structure.html/id=2" > Start tutorial</a>
+	    			</div>
+						<div class="col-md-4 shadowBox">
+								<img src="/images/maze.jpg" class="gameImage"></img>
+								<h3>Lesson 3</h3>
+								<h4>Lists and Functions</h4>
+								<a class="btn" href="tutorial-structure.html/id=3" > Start tutorial</a>
+	    			</div>
+	  			</div>
+				</div>
 
-			<div class="downmeniu" id="myDownMeniu">
-			</div>
+				<div class="downmeniu" id="myDownMeniu">
+					<p>Copyright (c) 2017 Sandra Borlovan All Rights Reserved.</p>
+				</div>
 
+		</main>
 
 	</body>
 </html>

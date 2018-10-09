@@ -5,11 +5,29 @@
 		<link href="../css/style-tutorial-structure.css" rel="stylesheet" type="text/css"></link>
 		<link href="../css/memory-board-game.css" rel="stylesheet" type="text/css"></link>
 		<link href="../css/style-top-meniu.css" rel="stylesheet" type="text/css"></link>
+		<link href="../css/pac-man-game.css" rel="stylesheet" type="text/css"></link>
+
+		<!-- Added favicon -->
+		<link rel="apple-touch-icon" sizes="180x180" href="../favicons/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="../favicons/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="../favicons/favicon-16x16.png">
+		<link rel="manifest" href="../favicons/manifest.json">
+		<link rel="mask-icon" href="../favicons/safari-pinned-tab.svg" color="#5bbad5">
+		<meta name="theme-color" content="#ffffff">
 
 		<script src="../js/games.js"></script>
 		<script src="../js/memory-game.js"></script>
+		<script src="../js/pac-man-game.js"></script>
+		<script src="../js/pacman.js"></script>
+		<script src="../js/maze.js"></script>
+		<script src="../js/food.js"></script>
+		<script src="../js/ghost.js"></script>
 
+		<!-- Added for p5.js -->
+		<script src="//cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.10/p5.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.10/addons/p5.dom.js"></script>
 
+		<!-- Added for terminal functionality -->
 		<script src="../js/terminal.js"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
 		<script src="http://www.skulpt.org/static/skulpt.min.js" type="text/javascript"></script>
@@ -19,67 +37,73 @@
 
 	<body>
 
-    <div class="topPanel">
-      <p>Lesson <%=content.id%>: <%=content.title%></p>
-      <img src="../images/profile.png"></img>
-    </div>
+		<header>
+
+		</header>
+
+		<main>
+
+	    <div class="topPanel">
+	      <p>Lesson <%=content.id%>: <%=content.title%></p>
+	      <img src="<%= content.image %>"></img>
+	    </div>
 
 
-    <div class="mainPanel">
-			<textarea class="code" id="myInitCode"><%=content.init_code%></textarea>
-			<textarea class="code" id="myCode"><%=content.code%></textarea>
-      <div class="terminal"><p class="output" id="myOutput"></p></div>
-			<div id="mycanvas"></div>
-    </div>
+	    <div class="mainPanel">
+				<textarea class="code" id="myInitCode"><%=content.init_code%></textarea>
+				<textarea class="code" id="myCode"><%=content.code%></textarea>
+	      <div class="terminal"><p class="output" id="myOutput"></p></div>
+				<div id="mycanvas"></div>
+	    </div>
 
-    <div class="taskDescription">
-			<h1>Task Description</h1>
-			<p> <%=content.task%> </p>
-			<h3>Let's begin</h3>
-			<p> <%=content.q1%>   </p>
-			<p> <%=content.q2%>   </p>
-			<p> <%=content.hint%> </p>
-		</div>
-
-    <div class="butttonSupport">
-      <div class="button" id="runButton" onclick="runit()">
-        <p>Run Code</p>
-				<!-- <img class="btn" src="../images/run-code-btn.png"></img> -->
-      </div>
-      <!-- <div class="button" id="saveButton">
-        <p>Save Code</p>
-      </div> -->
-      <div class="button" id="playButton">
-        <p><a href="#game">Play Game</a></p>
-      </div>
-    </div>
-
-		<div class="gamePanel" id="myGamePanel">
-			<a name="game"></a>
-			<div class="gameBoard" id="myGameBoard">
-				<div class="screen" id="myStartScreen">
-					<a onclick="startGame(<%=content.id%>)" class="startGameBtn" id="myStartGameBtn">Start Game</a>
-				</div>
-
-				<div class="screen" id="mySnakeGame">
-				</div>
-
-				<div class="screen" id="myMemoryGame">
-				</div>
-
-				<div class="screen" id="myGame">
-				</div>
-
-				<div class="" id="myGameOver">
-					<h3>Game Over!</h3>
-					<h2>Well done!</h2>
-				</div>
-
+	    <div class="taskDescription">
+				<h1>Task Description</h1>
+				<p> <%=content.task%> </p>
+				<h3>Let's begin</h3>
+				<p> <%=content.q1%>   </p>
+				<p> <%=content.q2%>   </p>
+				<p> <%=content.hint%> </p>
 			</div>
-		</div>
 
-		<div class="downmeniu" id="myDownMeniu">
-		</div>
+	    <div class="butttonSupport">
+	      <div class="button" id="runButton" onclick="runit()">
+	        <p>Run Code</p>
+	      </div>
+	      <!-- <div class="button" id="saveButton">
+	        <p>Save Code</p>
+	      </div> -->
+	      <div class="button" id="playButton">
+	        <p><a href="#game">Play Game</a></p>
+	      </div>
+	    </div>
 
+			<div class="gamePanel" id="myGamePanel">
+				<a name="game"></a>
+				<div class="gameBoard" id="myGameBoard">
+					<div class="screen" id="myStartScreen">
+						<a onclick="startGame(<%=content.id%>)" class="startGameBtn" id="myStartGameBtn">Start Game</a>
+					</div>
+
+					<div class="screen" id="myPacmanGame">
+					</div>
+
+					<div class="screen" id="myMemoryGame">
+					</div>
+
+					<div class="screen" id="myGame">
+					</div>
+
+					<div class="" id="myGameOver">
+						<h3 id="myTitle">Game Over!</h3>
+						<h2 id="myMessage">Well done!</h2>
+					</div>
+
+				</div>
+			</div>
+
+			<div class="downmeniu" id="myDownMeniu">
+			</div>
+
+		</main>
 	</body>
 </html>

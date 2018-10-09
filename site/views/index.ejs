@@ -4,80 +4,86 @@
 		<link href="../css/style-top-meniu.css" rel="stylesheet" type="text/css"></link>
 		<link href="../css/style-about-page.css" rel="stylesheet" type="text/css"></link>
 
+		<!-- Added favicon -->
+		<link rel="apple-touch-icon" sizes="180x180" href="../favicons/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="../favicons/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="../favicons/favicon-16x16.png">
+		<link rel="manifest" href="../favicons/manifest.json">
+		<link rel="mask-icon" href="../favicons/safari-pinned-tab.svg" color="#5bbad5">
+		<meta name="theme-color" content="#ffffff">
+
 		<script src="../js/log-in.js"></script>
+
 	</head>
+
 	<body>
-		<div class="scrollable">
+		<header>
+			<% if(session.loggedIn){%>
+				<% var username = session.username%>
+				<% var name = session.name%>
+				<% var email = session.email%>
+				<% var loggedIn = session.loggedIn%>
+				<% var password = session.password%>
+				<% var education = session.education%>
+				<% var tutorial_1 = session.tutorial_1%>
+				<% var tutorial_2 = session.tutorial_2%>
+				<% var tutorial_3 = session.tutorial_3%>
+				<% var image = session.image%>
+			<% }else{ %>
+				<% var image = "../images/profile/profile.png"%>
+				<% var loggedIn = session.loggedIn%>
+			<% }%>
+			<% include top-meniu.ejs %>
+		</header>
 
-			<ul class="topmeniu" id="myTopmeniu">
-				<li><a href="index.html">About</a></li>
-				<li><a href="profile.html">Home</a></li>
-				<li><a href="tutorials.html">Tutorials</a></li>
+		<main>
+			<div class="scrollable">
 
-				<img class="dropBtn" src="../images/profile.png" onclick="enableLogIn()"></img>
-				<!-- <ul  class="dropDownMeniu" id="myDropDownMeniu">
-					<li><a href="#">Log in </a></li>
-					<li><a href="#">Log out</a></li>
-				</ul> -->
-			</ul>
 
-			<div class="overShadow" id="myLogInWindow" >
-				<form class="formContent" action="/login" method="post">
-					<div class="header">
-						<div class="logo"></div>
-						<!-- <label class="loginTitle">FunCode</label> -->
-						<p>FunCode<p>
-				  </div>
 
-					<label>Username</label>
-					<input type="text" id="username" name="username" placeholder="Your username..">
-
-					<label>Email</label>
-					<input type="text" id="email" name="email" placeholder="Your email..">
-
-					<label>Password</label>
-					<input type="text" id="password" name="password" placeholder="Your password..">
-
-					<button class="submitBtn" type="submit">Log in</button>
-					<button class="cancelBtn" onclick="exitLogin()">Cancel</button>
-				</form>
-			</div>
-
-			<div class="canvas" id="bg_image">
-				<h1>Let's have some fun!<h1>
-			</div>
-
-			<div class="canvas" id="aboutForKids">
-				<br></br>
-				<h1>Let's meet Pete</h1>
-				<br></br>
-				<div class ="textContainer">
-					<p>Pete is an enthusiastic and lovable python. Don't worry...he is far from being dangerous. He is actually a vegetarian. </p>
-					<p>However modern he tried to be, he faces one big difficulty. He does not know how to communicate with humans. For that he will need your help and guidance to complete some daily activities and be sure that we will also have plenty of fun while doing it.</p>
-					<p>Pete has prepared some really exciting activities filled with games through which you can learn his language.</p>
+				<div class="canvas" id="bg_image">
+					<h1>Let's have some fun!<h1>
 				</div>
-				<br></br>
-				<a class="btn" >Get Started</a>
-				<br></br>
-			</div>
 
-			<div class="canvas" id="aboutForParents">
-				<div class="animation" id="myAnimation">
-					<img id="gear_1" src= "../images/gear1.png"></img>
-					<img id="gear_2" src= "../images/gear.png"></img>
-					<img id="gear_3" src= "../images/gear5.png"></img>
-				</div>
-				<h1> Why not learn and have fun?!</h1>
-				<div class="textContainer">
-					<p>This website offers the advantages of learning an up to date programming language while getting engaged simple and enjoyable tasks. An interpreted language, Python has a design philosophy which emphasizes code readability, its resamblance with natural english making into perfectly suitable for childern. Its abstarction offers the ability to focus more on the process understanding rather than syntax.</p>
+				<div class="canvas" id="aboutForKids">
 					<br></br>
+					<h1>Let's meet Pete</h1>
+					<br></br>
+					<div class ="textContainer">
+						<p>Pete is an enthusiastic and lovable python. Don't worry...he is far from being dangerous. He is actually a vegetarian. </p>
+						<p>However modern he tried to be, he faces one big difficulty. He does not know how to communicate with humans. For that he will need your help and guidance to complete some daily activities and be sure that we will also have plenty of fun while doing it.</p>
+						<p>Pete has prepared some really exciting activities filled with games through which you can learn his language.</p>
+					</div>
+					<br></br>
+					<% if(loggedIn == true) {%>
+			      <a class="btn" href="profile.html">Get Started</a>
+			    <% } else { %>
+			      <a class="btn" href="#" onclick="enableLogIn()">Get Started</a>
+			    <% } %>
 					<br></br>
 				</div>
-			</div>
 
-			<div class="downmeniu" id="myDownMeniu">
-			</div>
+				<div class="canvas" id="aboutForParents">
+					<div class="animation" id="myAnimation">
+						<img id="gear_1" src= "../images/gear1.png"></img>
+						<img id="gear_2" src= "../images/gear.png"></img>
+						<img id="gear_3" src= "../images/gear5.png"></img>
+					</div>
+					<h1> Why not learn and have fun?!</h1>
+					<div class="textContainer">
+						<p>This website offers the advantages of learning an up to date programming language while getting engaged simple and enjoyable tasks. An interpreted language, Python has a design philosophy which emphasizes code readability, its resamblance with natural english making into perfectly suitable for childern. Its abstarction offers the ability to focus more on the process understanding rather than syntax.</p>
+						<br></br>
+						<br></br>
+					</div>
+				</div>
 
-		</div>
+				<div class="downmeniu" id="myDownMeniu">
+					<p>Copyright (c) 2017 Sandra Borlovan All Rights Reserved.</p>
+				</div>
+
+			</div>
+		</main>
+
+
 	</body>
 </html>

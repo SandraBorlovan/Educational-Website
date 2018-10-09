@@ -1,7 +1,15 @@
+body {
+	padding: 0px;
+	margin: 0px;
+	height: 100%;
+	width: 100%;
+	font-family: 'Raleway', sans-serif;
+}
+
+
 div.wideCanvas{
-  /*max-width: 100%;*/
+  max-width: 100%;
   width:100%;
-  /*height: 10%;*/
   margin: 0;
   padding: 0;
   align-items: center;
@@ -32,30 +40,40 @@ div.profile{
 }
 
 div.shadowBox{
-  height : 45%;
+  height : 55%;
+	max-height: 55%;
 	width : 15%;
 	align-items: center;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	text-align: center;
 	z-index: 2;
+	overflow: hidden;
 }
 
 a.profileBtn{
+	width: 60%;
   background-color: rgb(233, 173, 0);
   border: none;
   color: black;
-  padding: 15px 32px;
+  padding: 10% 17%;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 100%;
   margin: 4px 2px;
   cursor: pointer;
 }
 
 a.profileBtn:hover{
-  border: 2px solid #4CAF50;
+	box-shadow: 0px 4px 4px rgba(34,62,66,.5);
+	-webkit-transition: box-shadow 1s ease;
+	transition: box-shadow 1s ease;
 }
+
+#logOutBtn{
+
+}
+
 .sideMeniu{
     margin: 0px;
 }
@@ -64,7 +82,7 @@ ul.meniuTopics{
   margin: 0px;
   padding: 4px;
   width: 5%;
-  height: 100%;
+  height: 150%;
   background-color: rgb(233, 173, 0);
   position: absolute;
   list-style-type: none;
@@ -93,22 +111,12 @@ hr {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-/*@keyframes slide{
-  from {translate(-100px, 0px);}
-  to {translate(0px, 0px);}
-}*/
-
 .slide_text li p{
   text-indent: -190px;
   transition: 2s ease;
-  /*animation-name: slide;
-  animation-duration: 2s;
-  animation-timing-function: ease;
-  animation-play-state: paused;*/
 }
 .slide_text:hover li p{
   transform: translate(95px, 0px);
-  /*animation-play-state: running;*/
 }
 
 .topicDisplay{
@@ -129,11 +137,33 @@ hr {
 }
 
 #topic_1{
-  visibility: visible;
+	display: block;
+	position: relative;
+}
+
+.profileImages{
+	width: 100%;
+	height: 80%;
+	padding-top: 5%;
+	padding-bottom: 10%;
+	position: relative;
+}
+
+.imagesRow{
+	width: 100%;
+	height: 30%;
+}
+
+.imagesRow img{
+	margin: 3%;
+	width: 18%;
+	display: inline-block;
+	box-shadow: 5px 10px 15px grey;
 }
 
 #topic_2{
-  visibility: hidden;
+	display: none;
+	position: relative;
 }
 
 .detailsContent{
@@ -171,5 +201,30 @@ hr {
 }
 
 #topic_3{
-  visibility: hidden;
+	display: none;
+	position: relative;
+}
+
+.submitModif{
+	background-color: rgb(4,146,70);
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 20px;
+	margin-top: 4%;
+	cursor: pointer;
+}
+
+#changeDetailsBtn{
+	margin-left: 37%;
+}
+
+#myDownMeniu{
+	width: 100%;
+  position: absolute;
+  background-color: rgb(233, 173, 0);
+  top: 250%;
 }

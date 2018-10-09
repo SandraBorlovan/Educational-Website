@@ -45,11 +45,13 @@ function memoryFlipTile(tile, val){
         memory_tile_ids = [];
 
         if(tilesFlipped == memory.length){
+          document.getElementById("myTitle").innerHTML = "Game Over!";
+          document.getElementById("myMessage").innerHTML = "Well done!";
           document.getElementById("myGameOver").style.visibility = "visible";
           setTimeout( function(){
              document.getElementById("myGameOver").style.visibility = "hidden";
              document.getElementById("myMemoryGame").style.visibility= "hidden" ;
-             document.getElementById("myStartScreen").style.visibility= "visible" ;
+             document.getElementById("myStartScreen").style.display= "block" ;
              document.getElementById("myCode").style.visibility= "visible" ;
              document.getElementById("myInitCode").style.visibility= "hidden" ;
            }, 3000);
